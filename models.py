@@ -5,3 +5,8 @@ class Project(BaseModel):
     description: str
     url: str
     technologies: list[str]
+    
+class Skill(BaseModel): 
+    title: str
+    icon: str
+    description: str
