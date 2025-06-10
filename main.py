@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from data import project_data, skills_data
+from data import projects_data, skills_data
 from models import Project, Skill
 
 app = FastAPI(title ="My Portfolio API", description="API that feeds data to cristophercervantes.com", version="1.0.0")
@@ -23,7 +23,7 @@ def get_projects():
     """
     Retrieve the list of projects.
     """
-    return project_data
+    return projects_data
 
 @app.get("/skills", response_model=list[Skill])
 def get_skills():

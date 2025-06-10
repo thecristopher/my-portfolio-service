@@ -1,19 +1,42 @@
 from models import Project, Skill
 
 # Data for the portfolio projects and skills
-project_data = [
+projects_data = [
     Project(
-        name="PSL Group / FirstWord",
-        description="Delivered scalable pharma insights through modern web apps & feed infrastructure.",
+        title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
-        technologies=["React", "PHP", "AWS", "Docker", "Node.js", "MySQL", "PostgreSQL"]
+        description="Delivered scalable pharma insights through modern web apps & feed infrastructure.",
+        technologies=["React", "PHP", "Python", "AWS", "Docker", "Node.js", "MySQL", "PostgreSQL"],
+        image="psl.png"
     ),
     Project(
-        name="Grupo Tress",
+        title="Grupo Tress",
+        url="https://www.tress.com.mx/",
         description="Built enterprise-grade payroll tools with secure, high-performance architecture.",
-        url="http://tress.com.mx/",
-        technologies=["React", "AWS", "C#", "docker", "Node.js", ".NET", "SQL Server", "PostgreSQL"] 
-    )
+        technologies=["React", "C#", "AWS", "Azure", "Docker", "Node.js", "SQL", "PostgreSQL"],
+        image="grupotress.jpg"
+    ),
+    Project(
+        title="Hisense México",
+        url="https://www.hisense.com.mx/",
+        description="Developed corporate & factory tooling for productivity and systems integration.",
+        technologies=["C#", "MVC", "SQL"],
+        image="hisense.png"
+    ),
+    Project(
+        title="Umbrella Seguros",
+        url="https://www.umbrella-seguros.com/",
+        description="Built modern insurance platform focused on speed, UX, and digital reach.",
+        technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
+        image="umbrella.jpg"
+    ),
+    Project(
+        title="Genesis Cazares, DDS",
+        url="https://dentistagenesiscazares.com",
+        description="Promoted services through a responsive C# MVC web app tailored for visibility.",
+        technologies=["C#", "MVC", "SQL", "JavaScript"],
+        image="dentist_genesis.png"
+    ),
 ]
 
 skills_data = [
