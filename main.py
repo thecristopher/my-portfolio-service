@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from data import project_data, skills_data
 from models import Project, Skill
 
-app = FastAPI(title ="Portfolio API", description="API for my portfolio projects", version="1.0.0")
+app = FastAPI(title ="My Portfolio API", description="API that feeds data to cristophercervantes.com", version="1.0.0")
 
 origins = [
     "http://localhost:5173",  # Local development
@@ -21,7 +21,7 @@ app.add_middleware(
 @app.get("/projects", response_model=list[Project])
 def get_projects():
     """
-    Retrieve the list of portfolio projects.
+    Retrieve the list of projects.
     """
     return project_data
 
