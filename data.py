@@ -48,13 +48,6 @@ projects_data = [
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
     ),
-    Project(
-        title="Genesis Cazares, DDS",
-        url="https://dentistagenesiscazares.com",
-        description="Promoted services through a responsive C# MVC web app tailored for visibility.",
-        technologies=["C#", "MVC", "SQL", "JavaScript"],
-        image="dentist_genesis.png",
-    ),
 ]
 
 skills_data = [
