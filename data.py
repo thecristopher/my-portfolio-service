@@ -5,7 +5,7 @@ projects_data = [
     Project(
         title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
-        description="Delivered scalable pharma insights through modern web apps & feed infrastructure.",
+        description="Delivered scalable pharma and medical insights through modern web apps, newsletters, feed infrastructure and AI models.",
         technologies=[
             "React",
             "PHP",
@@ -48,6 +48,14 @@ projects_data = [
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
     ),
+     Project(
+        title="Systems Communications",
+        url="https://www.systemscomm.net/es/inicio/",
+        description="Learned clean code principles while creating automated systems for transporation and inventory management.",
+        technologies=["PHP", "C#", "SQL"],
+        image="systemscommunications.jpg",
+    ),
+
 ]
 
 skills_data = [
