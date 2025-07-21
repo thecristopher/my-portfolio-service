@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response, Request, Cookie
 from fastapi.middleware.cors import CORSMiddleware
 from random import randint
 
@@ -77,10 +77,24 @@ def get_skills():
     """
     return skills_data
 
-
 @app.get("/roll", response_model=RollResult)
-def perception_check():
+def perception_check(
+    response: Response,
+    request: Request,
+    failed_before: bool = Cookie(default=False, alias="failed_once")
+):
     roll = randint(1, 20)
-    success = roll >= 10
-    message = "Success!" if success else "Failure! You rolled a low number, try again."
+    success = roll >= 8
+
+    if success:
+        message = "Success!"
+        response.delete_cookie("failed_once")
+    else:
+        if failed_before:
+            message = "Failure."
+        else:
+            message = "Failure! You rolled a low number, try again."
+            # Set cookie so next time it doesn't show the full message again
+            response.set_cookie(key="failed_once", value="true")
+
     return RollResult(roll=roll, success=success, message=message)
