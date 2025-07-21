@@ -51,7 +51,7 @@ projects_data = [
      Project(
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
-        description="Learned clean code principles while creating automated systems for transporation and inventory management.",
+        description="Learned clean code principles while creating automated systems for transportation and inventory management.",
         technologies=["PHP", "C#", "SQL"],
         image="systemscommunications.jpg",
     ),
