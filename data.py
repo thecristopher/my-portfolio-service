@@ -6,6 +6,12 @@ projects_data = [
         title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
         description="Delivered scalable pharma and medical insights through modern web apps, newsletters, feed infrastructure and AI models.",
+        detailed_description=(
+            "As the Tech Lead for the FirstWord application, I oversee all technology decisions that keep our platform at the forefront of modern SaaS standards. "
+            "Utilizing technologies like React, PHP, Python, AWS, Docker, Node.js, MySQL, and PostgreSQL, I deliver a scalable, intelligent platform that lets users "
+            "browse applications, read newsletters, and request more insights — all enhanced by a custom-built AI model. My AWS certifications support daily tasks of "
+            "diagnosing issues, proposing solutions, and evolving PSL’s suite of tools."
+        ),
         technologies=[
             "React",
             "PHP",
@@ -22,6 +28,11 @@ projects_data = [
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
         description="Built enterprise-grade payroll tools with secure, high-performance architecture.",
+        detailed_description=(
+            "As a Senior Developer, I maintained and expanded core applications within Grupo Tress Internacional using React, C#, AWS, Azure, Docker, Node.js, SQL, and PostgreSQL. "
+            "I led the development of a self-enrollment payroll application that empowered users to manage check-ins and outs. Additionally, I designed GTI Controls — a reusable UI component "
+            "library powering 'Interis Works', a cloud-based payroll system built with microservices and React. Together with Sistema Tress, this platform stands as a pioneer in payroll software across Mexico, the U.S., and Canada."
+        ),
         technologies=[
             "React",
             "C#",
@@ -38,6 +49,11 @@ projects_data = [
         title="Hisense México",
         url="https://www.hisense.com.mx/",
         description="Developed corporate & factory tooling for productivity and systems integration.",
+        detailed_description=(
+            "With C#, MVC, and SQL, I spearheaded several projects to boost productivity across Hisense Mexico's corporate and factory environments. "
+            "This included a ticketing system for IT requests built from scratch and contributions to the official corporate website. "
+            "My tools helped streamline manufacturing performance, integrating with internal systems for real-time improvements."
+        ),
         technologies=["C#", "MVC", "SQL"],
         image="hisense.png",
     ),
@@ -45,6 +61,10 @@ projects_data = [
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
         description="Built modern insurance platform focused on speed, UX, and digital reach.",
+        detailed_description=(
+            "I enhanced and modernized Umbrella’s insurance management platform, using technologies like C#, MVC, SQL, Python, and JavaScript. "
+            "Beyond revamping school insurance workflows, I maintained and extended core features, improving UI/UX and operational logic to scale with user needs."
+        ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
     ),
@@ -52,10 +72,13 @@ projects_data = [
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
         description="Learned clean code principles while creating automated systems for transportation and inventory management.",
+        detailed_description=(
+            "During my internship, I put clean code principles into practice by developing a transportation inventory system used by the Tijuana customs office. "
+            "Using PHP, C#, and SQL, I created a tool for tracking truck check-ins and check-outs, supporting logistics in a real-world, high-volume environment."
+        ),
         technologies=["PHP", "C#", "SQL"],
-        image="systemscommunications.png",
+        image="syscoms.png",
     ),
-
 ]
 
 skills_data = [

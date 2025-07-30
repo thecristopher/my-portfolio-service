@@ -10,6 +10,7 @@ class SocialLink:
 class Project(BaseModel): 
     title: str
     description: str
+    detailed_description: str
     url: str
     technologies: list[str]
     image: str
