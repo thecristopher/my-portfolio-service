@@ -25,6 +25,35 @@ projects_data = [
         image="psl.png",
     ),
     Project(
+        title="Dentist Genesis Cazares",
+        url="https://dentistagenesiscazares.com/",
+        description=(
+            "A production-grade .NET web application for a dental practice, designed for speed, security, "
+            "and reliability, and deployed through a fully automated Azure CI/CD pipeline."
+        ),
+        detailed_description=(
+            "I led the end-to-end delivery of a modern practice website and appointment system for Dentist Genesis Cazares. "
+            "The solution centers on an ASP.NET Core application with a lightweight React front end for interactive components "
+            "(appointments, pricing, FAQs) and integrates with Azure services for hosting, deployment, security, and observability. "
+            "The goal was a site that feels effortless for patients while remaining simple for staff to update and resilient under traffic spikes."
+        ),
+        technologies=[
+            "ASP.NET Core",
+            "C#",
+            "React",
+            "TypeScript",
+            "Azure App Service",
+            "Azure SQL Database",
+            "Azure Key Vault",
+            "Azure Storage",
+            "Application Insights",
+            "GitHub Actions / Azure DevOps",
+            "Docker (optional)",
+            "SendGrid / Azure Communication Services",
+        ],
+        image="dentist.png",
+    ),
+    Project(
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
         description="Built enterprise-grade payroll tools with secure, high-performance architecture.",
@@ -68,7 +97,7 @@ projects_data = [
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
     ),
-     Project(
+    Project(
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
         description="Learned clean code principles while creating automated systems for transportation and inventory management.",
