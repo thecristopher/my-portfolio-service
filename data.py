@@ -1,66 +1,51 @@
-from models import Project, Skill, NavBarItem, AboutMe, ContactInfo, SocialLink
+from models import Project, Skill, SkillLevel, NavBarItem, AboutMe, ContactInfo, SocialLink
 
 # Data for the portfolio projects and skills
 projects_data = [
     Project(
         title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
-        description="Delivered scalable pharma and medical insights through modern web apps, newsletters, feed infrastructure and AI models.",
+        description=(
+            "Leading engineering for FirstWord: a serverless TypeScript platform on AWS that delivers pharma and "
+            "medical insights through web apps, newsletters, content feeds and AI models."
+        ),
         detailed_description=(
-            "As the Tech Lead for the FirstWord application, I oversee all technology decisions that keep our platform at the forefront of modern SaaS standards. "
-            "Utilizing technologies like React, PHP, Python, AWS, Docker, Node.js, MySQL, and PostgreSQL, I deliver a scalable, intelligent platform that lets users "
-            "browse applications, read newsletters, and request more insights — all enhanced by a custom-built AI model. My AWS certifications support daily tasks of "
-            "diagnosing issues, proposing solutions, and evolving PSL’s suite of tools."
+            "I was FirstWord's Tech Lead and now manage its engineering team. I own the technical direction and the "
+            "delivery: setting priorities, reviewing architecture, growing the engineers on the team and keeping a "
+            "steady release rhythm. The platform runs on TypeScript and Next.js, with serverless services on AWS backed "
+            "by DynamoDB and MySQL. It lets users browse applications, read newsletters and request deeper insights, "
+            "all enhanced by a custom AI model, and my AWS certifications still earn their keep whenever the team "
+            "needs a second pair of eyes on a tricky problem."
         ),
         technologies=[
-            "React",
-            "PHP",
-            "Python",
+            "TypeScript",
+            "Next.js",
+            "Serverless",
             "AWS",
-            "Docker",
-            "Node.js",
+            "DynamoDB",
             "MySQL",
+            "React",
+            "Node.js",
+            "Python",
+            "PHP",
+            "Docker",
             "PostgreSQL",
         ],
         image="psl.png",
     ),
     Project(
-        title="Dentist Genesis Cazares",
-        url="https://dentistagenesiscazares.com/",
-        description=(
-            "A production-grade .NET web application for a dental practice, designed for speed, security, "
-            "and reliability, and deployed through a fully automated Azure CI/CD pipeline."
-        ),
-        detailed_description=(
-            "I led the end-to-end delivery of a modern practice website and appointment system for Dentist Genesis Cazares. "
-            "The solution centers on an ASP.NET Core application with a lightweight React front end for interactive components "
-            "(appointments, pricing, FAQs) and integrates with Azure services for hosting, deployment, security, and observability. "
-            "The goal was a site that feels effortless for patients while remaining simple for staff to update and resilient under traffic spikes."
-        ),
-        technologies=[
-            "ASP.NET Core",
-            "C#",
-            "React",
-            "TypeScript",
-            "Azure App Service",
-            "Azure SQL Database",
-            "Azure Key Vault",
-            "Azure Storage",
-            "Application Insights",
-            "GitHub Actions / Azure DevOps",
-            "Docker (optional)",
-            "SendGrid / Azure Communication Services",
-        ],
-        image="dentist.png",
-    ),
-    Project(
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
-        description="Built enterprise-grade payroll tools with secure, high-performance architecture.",
+        description=(
+            "Built enterprise payroll software and the component library behind a cloud payroll platform "
+            "serving Mexico, the U.S. and Canada."
+        ),
         detailed_description=(
-            "As a Senior Developer, I maintained and expanded core applications within Grupo Tress Internacional using React, C#, AWS, Azure, Docker, Node.js, SQL, and PostgreSQL. "
-            "I led the development of a self-enrollment payroll application that empowered users to manage check-ins and outs. Additionally, I designed GTI Controls — a reusable UI component "
-            "library powering 'Interis Works', a cloud-based payroll system built with microservices and React. Together with Sistema Tress, this platform stands as a pioneer in payroll software across Mexico, the U.S., and Canada."
+            "As a Senior Developer, I maintained and expanded core applications with React, C#, Node.js, SQL and "
+            "PostgreSQL across AWS, Azure and Docker. I led development of a payroll app where employees enroll "
+            "themselves and manage their own attendance. I also designed GTI Controls, a reusable UI component "
+            "library that powers Interis Works, a cloud payroll system built on microservices and React. Together "
+            "with Sistema Tress, it stands as a pioneer in payroll software across Mexico, the U.S. and Canada."
         ),
         technologies=[
             "React",
@@ -77,11 +62,12 @@ projects_data = [
     Project(
         title="Hisense México",
         url="https://www.hisense.com.mx/",
-        description="Developed corporate & factory tooling for productivity and systems integration.",
+        description="Built internal platforms that raised productivity across corporate offices and the factory floor.",
         detailed_description=(
-            "With C#, MVC, and SQL, I spearheaded several projects to boost productivity across Hisense Mexico's corporate and factory environments. "
-            "This included a ticketing system for IT requests built from scratch and contributions to the official corporate website. "
-            "My tools helped streamline manufacturing performance, integrating with internal systems for real-time improvements."
+            "Using C#, ASP.NET MVC and SQL, I led several projects to boost productivity across Hisense México's "
+            "corporate and manufacturing operations. That included an IT ticketing system built from scratch and "
+            "contributions to the official corporate website. The tools plugged into internal systems to streamline "
+            "manufacturing performance and surface improvements as they happened."
         ),
         technologies=["C#", "MVC", "SQL"],
         image="hisense.png",
@@ -89,10 +75,11 @@ projects_data = [
     Project(
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
-        description="Built modern insurance platform focused on speed, UX, and digital reach.",
+        description="Modernized an insurance management platform for speed, usability and digital reach.",
         detailed_description=(
-            "I enhanced and modernized Umbrella’s insurance management platform, using technologies like C#, MVC, SQL, Python, and JavaScript. "
-            "Beyond revamping school insurance workflows, I maintained and extended core features, improving UI/UX and operational logic to scale with user needs."
+            "I modernized Umbrella's insurance management platform with C#, MVC, SQL, Python and JavaScript. "
+            "Beyond reworking the school insurance workflows, I maintained and extended core features, sharpening "
+            "the UX and the operational logic so the platform could scale with its users."
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
@@ -100,10 +87,11 @@ projects_data = [
     Project(
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
-        description="Learned clean code principles while creating automated systems for transportation and inventory management.",
+        description="Where it started: logistics software for the Tijuana customs office, built during my internship.",
         detailed_description=(
-            "During my internship, I put clean code principles into practice by developing a transportation inventory system used by the Tijuana customs office. "
-            "Using PHP, C#, and SQL, I created a tool for tracking truck check-ins and check-outs, supporting logistics in a real-world, high-volume environment."
+            "During my internship I built a transportation inventory system used by the Tijuana customs office, "
+            "tracking trucks as they entered and left in a busy, real operation. Working in PHP, C# and SQL, this is "
+            "where clean code stopped being a theory and became a habit."
         ),
         technologies=["PHP", "C#", "SQL"],
         image="syscoms.png",
@@ -112,34 +100,52 @@ projects_data = [
 
 skills_data = [
     Skill(
-        title="Fullstack Development",
+        title="Engineering Management",
         icon="TbUserCode",
-        description="I craft systems that connect frontend and backend seamlessly, focusing on speed, maintainability, and user experience — regardless of the stack.",
+        description=(
+            "I grow engineers, set clear priorities and keep delivery predictable. Honest tradeoffs, healthy "
+            "teams, and everyone knowing why we're building it this way."
+        ),
     ),
     Skill(
-        title="Cloud Infrastructure",
+        title="Serverless on AWS",
         icon="FaAws",
-        description="With AWS and DevOps know-how, I ship scalable and production-ready systems that run smoothly and securely at any scale.",
+        description=(
+            "AWS certified and serverless by default: functions, queues and managed services that scale with "
+            "demand and stay cheap when it's quiet."
+        ),
     ),
     Skill(
-        title="Frontend",
-        icon="FaReact",
-        description="Beyond React, I focus on creating intuitive interfaces that scale with your users — blending design, accessibility, and performance.",
+        title="TypeScript & Next.js",
+        icon="SiNextdotjs",
+        description=(
+            "Typed end to end, from Next.js frontends to Node services, so refactors stay boring and bugs get "
+            "caught long before they reach review."
+        ),
     ),
     Skill(
-        title="Creative Design",
-        icon="PiPaintBrushBroadBold",
-        description="From motion graphics to UI aesthetics, I turn ideas into visual experiences that resonate with users and elevate brands.",
+        title="Data Modeling",
+        icon="SiAmazondynamodb",
+        description=(
+            "DynamoDB designed around real access patterns, and MySQL where relationships matter. The data model "
+            "is the architecture, so I treat it that way."
+        ),
     ),
     Skill(
-        title="Web Craftsmanship",
-        icon="FaJsSquare",
-        description="My foundation in JavaScript and browser tech allows me to optimize, modernize, and enhance any web experience — with or without frameworks.",
+        title="Developer Experience",
+        icon="SiNeovim",
+        description=(
+            "I live in Neovim and care about the tools around the team: fast feedback loops, calm CI and code "
+            "reviews that actually teach something."
+        ),
     ),
     Skill(
-        title="App Security & Observability",
+        title="Security & Observability",
         icon="GrShieldSecurity",
-        description="Performance and trust go hand in hand. I implement analytics, error tracking, and security patterns to ensure stability and insight.",
+        description=(
+            "Performance and trust go together. Analytics, error tracking and sensible security patterns, so "
+            "problems surface early and the system tells you what's wrong."
+        ),
     ),
 ]
 
@@ -151,35 +157,62 @@ navbar_data = [
     NavBarItem(title="Contact", url="/#contact"),
 ]
 
+# the frontend splits this on blank lines, renders the first paragraph as the lead,
+# and reads the "9+ years" phrase for the hero stats, so keep both shapes intact
 about_me_data = AboutMe(
     title="About",
+    role="Engineering Manager",
+    main_stack=["TypeScript", "Next.js", "Serverless", "AWS", "DynamoDB", "MySQL"],
+    editor="Neovim",
+    # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
+    skill_levels=[
+        SkillLevel(name="TypeScript", level=4),
+        SkillLevel(name="Next.js", level=4),
+        SkillLevel(name="Serverless", level=4),
+        SkillLevel(name="AWS", level=4),
+        SkillLevel(name="DynamoDB", level=4),
+        SkillLevel(name="MySQL", level=4),
+        SkillLevel(name="Node.js", level=5),
+        SkillLevel(name="React", level=4),
+        SkillLevel(name="Jira", level=4),
+        SkillLevel(name="Docker", level=4),
+        SkillLevel(name="Kubernetes", level=4),
+        SkillLevel(name="Neovim", level=4),
+        SkillLevel(name="C#", level=5),
+        SkillLevel(name="Python", level=4),
+        SkillLevel(name="PHP", level=4),
+        SkillLevel(name="PostgreSQL", level=4),
+        SkillLevel(name="SQL", level=4),
+        SkillLevel(name="JavaScript", level=4),
+        SkillLevel(name="MVC", level=4),
+        SkillLevel(name="Azure", level=3),
+    ],
     description=(
-        "Hey there! I’m Cristopher Cervantes, a fullstack developer with 9+ years of experience crafting everything from quick prototypes to enterprise-grade systems. I bridge the gap between front-end finesse and back-end muscle.\n\n"
-        'Throughout my career, I’ve had the chance to work with companies that didn’t just need "a developer," but someone who could jump between stacks, tackle legacy obstacles, and still deliver clean, scalable code. From building PHP-based platforms to wrangling cloud-native APIs with Python, I’ve pretty much been everywhere.\n\n'
-        "I'm fluent in several tech dialects: C#, .NET, React, PHP, Python, Node.js — you name it. Databases? Oh yeah. Whether it's MySQL, PostgreSQL, or NoSQL flavors, I love getting into data structure debates.\n\n"
-        "I’m also officially AWS-certified — both as a Cloud Practitioner and a Developer Associate. Translation: I can launch, scale, and troubleshoot your cloud infrastructure before my second cup of coffee.\n\n"
-        "At the core of it all, I’m someone who loves learning, building, and solving the kind of problems that make other developers sigh dramatically. I’m always up for a challenge — especially the kind that lets me push tech boundaries while having a good laugh in the process."
+        "I'm Cristopher Cervantes, an engineering manager with 9+ years of shipping production software, from "
+        "quick prototypes to enterprise platforms used across three countries.\n\n"
+        "At PSL Group I lead engineering for FirstWord. I was its Tech Lead and now manage the team behind it: "
+        "setting direction, growing engineers and keeping delivery steady on a serverless TypeScript platform "
+        "built on AWS.\n\n"
+        "Day to day that means TypeScript and Next.js up front, serverless services on AWS underneath, and DynamoDB "
+        "and MySQL holding the data. Before that I worked across C# and .NET, PHP and Python, which is why I can "
+        "still get into the details with any engineer on the team.\n\n"
+        "I'm AWS certified as both a Cloud Practitioner and a Developer Associate, so infrastructure is part of "
+        "the design conversation from day one, not an afterthought before launch.\n\n"
+        "I write code in Neovim, review it with care, and believe the best teams ship with clear priorities, honest "
+        "tradeoffs and code a teammate can pick up without a tour guide. I still love the kind of problem that makes "
+        "other developers sigh dramatically."
     ),
 )
 
 contact_info_data = ContactInfo(
-    email="isc.cristopher@gmail.com",
-    mailto="mailto:isc.cristopher@gmail.com",
+    email="contact@cristophercervantes.com",
+    mailto="mailto:contact@cristophercervantes.com",
     socials=[
         SocialLink(
             id=1, name="LinkedIn", url="https://www.linkedin.com/in/thecristopher/"
         ),
         SocialLink(
-            id=2, name="YouTube", url="https://www.youtube.com/@thecristopherofficial"
-        ),
-        SocialLink(
             id=3, name="Instagram", url="https://www.instagram.com/thecristopher/"
-        ),
-        SocialLink(
-            id=4, name="TikTok", url="https://www.tiktok.com/@thecristopherofficial"
-        ),
-        SocialLink(
-            id=5, name="Twitch", url="https://www.twitch.tv/thecristopherofficial"
         ),
     ],
 )

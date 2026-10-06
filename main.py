@@ -87,14 +87,14 @@ def perception_check(
     success = roll >= 8
 
     if success:
-        message = "Success!"
+        message = "Check passed. Nice roll."
         response.delete_cookie("failed_once")
     else:
         if failed_before:
-            message = "Failure."
+            message = "Failed again. The dice are not on your side."
         else:
-            message = "Failure! You rolled a low number, try again."
-            # Set cookie so next time it doesn't show the full message again
+            message = "Check failed. Roll again?"
+            # remember the miss so a second failure gets a different line
             response.set_cookie(key="failed_once", value="true")
 
     return RollResult(roll=roll, success=success, message=message)

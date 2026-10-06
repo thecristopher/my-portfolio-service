@@ -24,9 +24,17 @@ class NavBarItem(BaseModel):
     title: str
     url: str
     
+class SkillLevel(BaseModel):
+    name: str
+    level: int
+
 class AboutMe(BaseModel):
     title: str
     description: str
+    role: str
+    main_stack: list[str]
+    editor: str
+    skill_levels: list[SkillLevel]
     
 class ContactInfo(BaseModel):
     email: str
