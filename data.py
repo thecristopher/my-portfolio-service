@@ -148,6 +148,30 @@ skills_data = [
         ),
     ),
     Skill(
+        title="Frontend & UX",
+        icon="TbLayoutDashboard",
+        description=(
+            "Design systems, component libraries and multi brand apps from a single codebase. I care about the "
+            "small stuff too: loading states, dark mode, i18n and copy that sounds like a person wrote it."
+        ),
+    ),
+    Skill(
+        title="Data & Search",
+        icon="TbDatabase",
+        description=(
+            "MySQL, Aurora, PostgreSQL and DynamoDB for storage, OpenSearch for feeds and full text search. I "
+            "model the data around how it gets read, then make sure the indexes agree."
+        ),
+    ),
+    Skill(
+        title="Testing & Quality",
+        icon="TbTestPipe",
+        description=(
+            "Jest and Vitest for units, Cypress and Playwright for the flows users actually click through, and "
+            "CI that blocks the merge when coverage drops. Tests are how the next engineer trusts my code."
+        ),
+    ),
+    Skill(
         title="Infrastructure & Delivery",
         icon="SiNeovim",
         description=(
@@ -201,10 +225,13 @@ about_me_data = AboutMe(
         SkillLevel(name="SQS", level=4),
         SkillLevel(name="SNS", level=4),
         SkillLevel(name="EventBridge", level=4),
+        SkillLevel(name="Step Functions", level=4),
         SkillLevel(name="Terraform", level=4),
         SkillLevel(name="Docker", level=4),
         SkillLevel(name="Kubernetes", level=4),
+        SkillLevel(name="ArgoCD", level=4),
         SkillLevel(name="GitHub Actions", level=4),
+        SkillLevel(name="Jest", level=4),
         SkillLevel(name="PHP", level=4),
         SkillLevel(name="Symfony", level=4),
         SkillLevel(name="Jira", level=4),
@@ -221,8 +248,8 @@ about_me_data = AboutMe(
         SkillLevel(name="Procreate", level=3),
     ],
     description=(
-        "I'm Cristopher Cervantes, and I've spent 9+ years building production software, from early prototypes "
-        "to enterprise platforms used in three countries.\n\n"
+        "9+ years of building production software, from early prototypes to enterprise platforms used in "
+        "three countries.\n\n"
         "I worked my way up from intern to Senior Developer, Tech Lead and Engineering Manager. Today I lead "
         "engineering across several products in production: setting priorities, unblocking people and shipping "
         "releases without surprises.\n\n"

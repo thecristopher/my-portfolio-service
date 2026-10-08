@@ -13,6 +13,9 @@ client = TestClient(app)
 KNOWN_SKILL_ICONS = {
     "TbUserCode",
     "TbSparkles",
+    "TbLayoutDashboard",
+    "TbDatabase",
+    "TbTestPipe",
     "FaAws",
     "SiNextdotjs",
     "SiAmazondynamodb",
@@ -90,6 +93,15 @@ class CopyTests(unittest.TestCase):
     def test_about_covers_infrastructure_through_frontend(self):
         self.assertIn("Terraform", about_me_data.description)
         self.assertIn("React screens", about_me_data.description)
+
+    def test_skill_cards_fill_complete_rows_of_three(self):
+        self.assertEqual(len(skills_data) % 3, 0)
+
+    def test_skill_levels_split_evenly_into_two_columns(self):
+        self.assertEqual(len(about_me_data.skill_levels) % 2, 0)
+
+    def test_about_leaves_the_greeting_to_the_hero(self):
+        self.assertNotIn("I'm Cristopher", about_me_data.description)
 
     def test_csharp_and_node_are_top_rated(self):
         self.assertEqual(self.skill_level_map()["C#"], 5)
