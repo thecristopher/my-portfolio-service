@@ -7,35 +7,44 @@ projects_data = [
         url="https://www.pslgroup.com/",
         description=(
             "I manage engineering for all of PSL Group's products in production, including FirstWord, a pharma and "
-            "medical news platform: web apps, newsletters, content feeds and AI models."
+            "healthcare intelligence platform: web apps, newsletters, content feeds and an AI assistant on Bedrock."
         ),
         detailed_description=(
             "I joined as Tech Lead on FirstWord and now manage engineering for all four of our products in "
-            "production. Each one has its own stack, from PHP and Python services to Node.js, React and Next.js "
-            "apps, all running on AWS. I set priorities across the four, review architecture, mentor the engineers "
-            "and make sure each product ships on a regular schedule. Most of the newer work is TypeScript on "
-            "Lambda and other serverless AWS services, with DynamoDB, Aurora and MySQL for data. Deploys run "
-            "through GitHub Actions and the work lives in Jira. "
-            "Users browse apps, read newsletters and request deeper analysis, some of it backed by a custom AI "
-            "model. I still write code and jump in on the hard bugs when the team needs it."
+            "production. I set priorities, review architecture, mentor the engineers and keep releases on a "
+            "regular schedule, and I still write a lot of the code. "
+            "On the frontend, one React codebase runs three brands (FirstWord Pharma, HealthTech and Reports), "
+            "and I built FirstWord Manager, the Next.js workspace the team uses for newsletters, news alerts, "
+            "OpenSearch feeds, SSO clients and user access. "
+            "Behind it sits a serverless API in TypeScript on Lambda, API Gateway and DynamoDB that also powers "
+            "FirstWord AI: versioned agents that talk to Claude through Amazon Bedrock, with streaming "
+            "responses, guardrails and a knowledge base. "
+            "The older services are Symfony and PHP on MySQL and Aurora, plus the SSO and newsletter pipelines. "
+            "Infrastructure is Terraform across our AWS accounts, apps run on EKS through ArgoCD, and every repo "
+            "deploys with shared GitHub Actions workflows I maintain. I also set up the Claude Code tooling the "
+            "whole team uses day to day."
         ),
         technologies=[
             "TypeScript",
             "Next.js",
-            "Serverless",
+            "React",
+            "Node.js",
             "AWS",
+            "Serverless",
+            "Bedrock",
+            "LLMs",
             "Lambda",
             "DynamoDB",
             "Aurora",
             "MySQL",
-            "React",
-            "Node.js",
+            "OpenSearch",
+            "Terraform",
+            "Kubernetes",
             "GitHub Actions",
-            "Jira",
-            "Python",
             "PHP",
+            "Symfony",
             "Docker",
-            "PostgreSQL",
+            "Jira",
         ],
         image="psl.png",
     ),
@@ -113,43 +122,45 @@ skills_data = [
         ),
     ),
     Skill(
+        title="AI & LLMs",
+        icon="TbSparkles",
+        description=(
+            "I build LLM features that ship to real users: agents on Amazon Bedrock with Claude, streaming "
+            "responses, tool use, guardrails and knowledge bases. I also roll out AI coding tools so the whole "
+            "team gets faster, not just me."
+        ),
+    ),
+    Skill(
         title="AWS & Serverless",
         icon="FaAws",
         description=(
-            "AWS certified, and I've used most of the platform: Lambda, API Gateway, S3, SQS, SNS, EventBridge, "
-            "Step Functions, DynamoDB, Aurora, CloudFront, CloudWatch, Cognito, IAM and CloudFormation."
+            "AWS certified, and I've used most of the platform: Lambda, API Gateway, Bedrock, S3, SQS, SNS, "
+            "EventBridge, Step Functions, DynamoDB, Aurora, OpenSearch, CloudFront and Cognito. DynamoDB when the "
+            "access patterns are known, a relational database when the data has real relationships."
         ),
     ),
     Skill(
         title="Languages & Frameworks",
         icon="SiNextdotjs",
         description=(
-            "TypeScript, JavaScript, React and Next.js day to day. Before that, years of C# and ASP.NET MVC, "
-            "plus PHP, Python and Go."
+            "TypeScript, React, Next.js and Node.js day to day, plus PHP and Symfony on the older services. "
+            "Before that, years of C# and ASP.NET MVC, with some Python and Go along the way."
         ),
     ),
     Skill(
-        title="Databases",
-        icon="SiAmazondynamodb",
-        description=(
-            "MySQL, SQL Server, PostgreSQL, Aurora and DynamoDB. I design DynamoDB tables around how the data is "
-            "read, and use a relational database when the data has real relationships. I've also worked with SAP."
-        ),
-    ),
-    Skill(
-        title="Tooling & Delivery",
+        title="Infrastructure & Delivery",
         icon="SiNeovim",
         description=(
-            "Neovim for writing code, GitHub Actions for CI/CD, Docker and Kubernetes for running it, Jira for "
-            "tracking the work. Photoshop and Procreate when a project needs design work."
+            "Terraform for the infrastructure, Docker and Kubernetes with ArgoCD for running it, and shared GitHub "
+            "Actions workflows so every repo deploys the same way. Neovim for writing all of it."
         ),
     ),
     Skill(
         title="Security & Observability",
         icon="GrShieldSecurity",
         description=(
-            "I set up logging, error tracking and analytics early so problems show up before users report them, "
-            "and I keep auth, secrets and permissions locked down from the start."
+            "I set up logging, error tracking and audit trails early so problems show up before users report "
+            "them, and I keep auth, secrets and permissions locked down from the start."
         ),
     ),
 ]
@@ -167,37 +178,42 @@ navbar_data = [
 about_me_data = AboutMe(
     title="About",
     role="Tech Lead & Engineering Manager",
-    main_stack=["TypeScript", "Next.js", "Serverless", "AWS", "Lambda", "DynamoDB", "Aurora", "MySQL"],
+    main_stack=["TypeScript", "Next.js", "React", "Node.js", "AWS", "Serverless", "Bedrock", "LLMs"],
     editor="Neovim",
     # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
     skill_levels=[
-        SkillLevel(name="TypeScript", level=4),
-        SkillLevel(name="Next.js", level=4),
-        SkillLevel(name="Serverless", level=4),
-        SkillLevel(name="AWS", level=4),
-        SkillLevel(name="Lambda", level=4),
-        SkillLevel(name="DynamoDB", level=4),
+        SkillLevel(name="TypeScript", level=5),
+        SkillLevel(name="Next.js", level=5),
+        SkillLevel(name="React", level=5),
+        SkillLevel(name="Node.js", level=5),
+        SkillLevel(name="AWS", level=5),
+        SkillLevel(name="Serverless", level=5),
+        SkillLevel(name="Bedrock", level=5),
+        SkillLevel(name="LLMs", level=5),
+        SkillLevel(name="Lambda", level=5),
+        SkillLevel(name="DynamoDB", level=5),
+        SkillLevel(name="API Gateway", level=5),
+        SkillLevel(name="JavaScript", level=5),
         SkillLevel(name="Aurora", level=4),
         SkillLevel(name="MySQL", level=4),
-        SkillLevel(name="Node.js", level=5),
-        SkillLevel(name="React", level=4),
-        SkillLevel(name="JavaScript", level=4),
-        SkillLevel(name="API Gateway", level=4),
+        SkillLevel(name="OpenSearch", level=4),
         SkillLevel(name="S3", level=4),
         SkillLevel(name="SQS", level=4),
         SkillLevel(name="SNS", level=4),
         SkillLevel(name="EventBridge", level=4),
-        SkillLevel(name="GitHub Actions", level=4),
-        SkillLevel(name="Jira", level=4),
+        SkillLevel(name="Terraform", level=4),
         SkillLevel(name="Docker", level=4),
         SkillLevel(name="Kubernetes", level=4),
+        SkillLevel(name="GitHub Actions", level=4),
+        SkillLevel(name="PHP", level=4),
+        SkillLevel(name="Symfony", level=4),
+        SkillLevel(name="Jira", level=4),
         SkillLevel(name="Neovim", level=4),
         SkillLevel(name="C#", level=5),
         SkillLevel(name="MVC", level=4),
         SkillLevel(name="SQL", level=4),
         SkillLevel(name="PostgreSQL", level=4),
         SkillLevel(name="Python", level=4),
-        SkillLevel(name="PHP", level=4),
         SkillLevel(name="Go", level=3),
         SkillLevel(name="SAP", level=3),
         SkillLevel(name="Azure", level=3),
@@ -210,8 +226,10 @@ about_me_data = AboutMe(
         "I worked my way up from intern to Senior Developer, Tech Lead and Engineering Manager. Today I lead "
         "engineering across several products in production: setting priorities, unblocking people and shipping "
         "releases without surprises.\n\n"
-        "I've built across frontend, backend, cloud and data, so I can still go deep with anyone on the team. I "
-        "like hard problems, and software the next engineer can pick up on their own."
+        "I've worked every stage of the software lifecycle, from Terraform, Kubernetes and CI/CD pipelines, "
+        "through APIs, databases and LLM integrations, all the way up to the React screens people actually "
+        "click on. That's why I can still go deep with anyone on the team, wherever the problem lives. I like "
+        "hard problems, and software the next engineer can pick up on their own."
     ),
 )
 
@@ -221,6 +239,9 @@ contact_info_data = ContactInfo(
     socials=[
         SocialLink(
             id=1, name="LinkedIn", url="https://www.linkedin.com/in/thecristopher/"
+        ),
+        SocialLink(
+            id=2, name="GitHub", url="https://github.com/thecristopher"
         ),
         SocialLink(
             id=3, name="Instagram", url="https://www.instagram.com/thecristopher/"
