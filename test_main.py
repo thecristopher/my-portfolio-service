@@ -86,7 +86,7 @@ class CopyTests(unittest.TestCase):
 
     def test_contact_only_lists_professional_socials(self):
         names = [social.name for social in contact_info_data.socials]
-        self.assertEqual(names, ["LinkedIn", "Instagram"])
+        self.assertEqual(names, ["LinkedIn", "GitHub", "Instagram"])
 
 
 class RollTests(unittest.TestCase):

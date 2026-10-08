@@ -223,6 +223,9 @@ contact_info_data = ContactInfo(
             id=1, name="LinkedIn", url="https://www.linkedin.com/in/thecristopher/"
         ),
         SocialLink(
+            id=2, name="GitHub", url="https://github.com/thecristopher"
+        ),
+        SocialLink(
             id=3, name="Instagram", url="https://www.instagram.com/thecristopher/"
         ),
     ],
