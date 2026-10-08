@@ -205,8 +205,8 @@ about_me_data = AboutMe(
         SkillLevel(name="Procreate", level=3),
     ],
     description=(
-        "I'm Cristopher Cervantes, a Tech Lead and Engineering Manager with 9+ years of experience building "
-        "production software, from early prototypes to enterprise platforms used in three countries.\n\n"
+        "I'm Cristopher Cervantes, and I've spent 9+ years building production software, from early prototypes "
+        "to enterprise platforms used in three countries.\n\n"
         "I worked my way up from intern to Senior Developer, Tech Lead and Engineering Manager. Today I lead "
         "engineering across several products in production: setting priorities, unblocking people and shipping "
         "releases without surprises.\n\n"
