@@ -47,7 +47,7 @@ class CopyTests(unittest.TestCase):
             self.assertIn(skill.icon, KNOWN_SKILL_ICONS)
 
     def test_about_names_the_current_role(self):
-        self.assertEqual(about_me_data.role, "Engineering Manager")
+        self.assertEqual(about_me_data.role, "Tech Lead & Engineering Manager")
 
     def test_main_stack_is_used_in_the_current_role(self):
         current_role_stack = projects_data[0].technologies
