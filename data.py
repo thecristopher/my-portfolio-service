@@ -166,7 +166,7 @@ navbar_data = [
 # and reads the "9+ years" phrase for the hero stats, so keep both shapes intact
 about_me_data = AboutMe(
     title="About",
-    role="Engineering Manager",
+    role="Tech Lead & Engineering Manager",
     main_stack=["TypeScript", "Next.js", "Serverless", "AWS", "Lambda", "DynamoDB", "Aurora", "MySQL"],
     editor="Neovim",
     # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
@@ -207,10 +207,11 @@ about_me_data = AboutMe(
     description=(
         "I'm Cristopher Cervantes, a Tech Lead and Engineering Manager with 9+ years of experience building "
         "production software, from early prototypes to enterprise platforms used in three countries.\n\n"
-        "I went from intern to Senior Developer to leading teams. At PSL Group I own engineering for four products "
-        "in production: setting priorities, unblocking people and shipping releases without surprises.\n\n"
-        "I still get into the code with my team. I like hard problems, and software the next engineer can pick up "
-        "on their own."
+        "I worked my way up from intern to Senior Developer, Tech Lead and Engineering Manager. Today I lead "
+        "engineering across several products in production: setting priorities, unblocking people and shipping "
+        "releases without surprises.\n\n"
+        "I've built across frontend, backend, cloud and data, so I can still go deep with anyone on the team. I "
+        "like hard problems, and software the next engineer can pick up on their own."
     ),
 )
 
