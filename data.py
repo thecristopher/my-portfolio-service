@@ -205,24 +205,12 @@ about_me_data = AboutMe(
         SkillLevel(name="Procreate", level=3),
     ],
     description=(
-        "I'm Cristopher Cervantes, an engineering manager with 9+ years of experience building production "
-        "software, from small prototypes to enterprise platforms used in three countries.\n\n"
-        "I started as an intern, then worked as a Junior Developer, and moved up to Senior Developer, Tech Lead and "
-        "now Engineering Manager. Every step came from shipping, owning more of the system and helping the people "
-        "around me get better at it.\n\n"
-        "At PSL Group I manage engineering for all of our products at the production level. I joined as Tech Lead "
-        "on FirstWord, and today I'm responsible for four products running in production, each with its own stack: "
-        "PHP, Python, Node.js, React, Next.js and a lot of AWS. My job is keeping all four moving at once: "
-        "planning, setting priorities, unblocking the team and "
-        "making sure releases go out without surprises.\n\n"
-        "On the technical side that means TypeScript, React and Next.js on the frontend, Lambda and other AWS "
-        "services on the backend, DynamoDB, Aurora and MySQL for data, and GitHub Actions for deploys. Earlier on I "
-        "wrote a lot of "
-        "C# and ASP.NET MVC, along with PHP, Python, Go and some SAP work, so I can still get into the details "
-        "with anyone on the team.\n\n"
-        "I'm AWS certified as a Cloud Practitioner and a Developer Associate.\n\n"
-        "I write code in Neovim and open Photoshop or Procreate when a project needs design work. I like hard "
-        "problems, and I like code that another engineer can pick up without me walking them through it."
+        "I'm Cristopher Cervantes, a Tech Lead and Engineering Manager with 9+ years of experience building "
+        "production software, from early prototypes to enterprise platforms used in three countries.\n\n"
+        "I went from intern to Senior Developer to leading teams. At PSL Group I own engineering for four products "
+        "in production: setting priorities, unblocking people and shipping releases without surprises.\n\n"
+        "I still get into the code with my team. I like hard problems, and software the next engineer can pick up "
+        "on their own."
     ),
 )
 
