@@ -6,26 +6,32 @@ projects_data = [
         title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
         description=(
-            "Leading engineering for FirstWord: a serverless TypeScript platform on AWS that delivers pharma and "
-            "medical insights through web apps, newsletters, content feeds and AI models."
+            "I manage engineering for all of PSL Group's products in production, including FirstWord, a pharma and "
+            "medical news platform: web apps, newsletters, content feeds and AI models."
         ),
         detailed_description=(
-            "I was FirstWord's Tech Lead and now manage its engineering team. I own the technical direction and the "
-            "delivery: setting priorities, reviewing architecture, growing the engineers on the team and keeping a "
-            "steady release rhythm. The platform runs on TypeScript and Next.js, with serverless services on AWS backed "
-            "by DynamoDB and MySQL. It lets users browse applications, read newsletters and request deeper insights, "
-            "all enhanced by a custom AI model, and my AWS certifications still earn their keep whenever the team "
-            "needs a second pair of eyes on a tricky problem."
+            "I joined as Tech Lead on FirstWord and now manage engineering for all four of our products in "
+            "production. Each one has its own stack, from PHP and Python services to Node.js, React and Next.js "
+            "apps, all running on AWS. I set priorities across the four, review architecture, mentor the engineers "
+            "and make sure each product ships on a regular schedule. Most of the newer work is TypeScript on "
+            "Lambda and other serverless AWS services, with DynamoDB, Aurora and MySQL for data. Deploys run "
+            "through GitHub Actions and the work lives in Jira. "
+            "Users browse apps, read newsletters and request deeper analysis, some of it backed by a custom AI "
+            "model. I still write code and jump in on the hard bugs when the team needs it."
         ),
         technologies=[
             "TypeScript",
             "Next.js",
             "Serverless",
             "AWS",
+            "Lambda",
             "DynamoDB",
+            "Aurora",
             "MySQL",
             "React",
             "Node.js",
+            "GitHub Actions",
+            "Jira",
             "Python",
             "PHP",
             "Docker",
@@ -37,15 +43,15 @@ projects_data = [
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
         description=(
-            "Built enterprise payroll software and the component library behind a cloud payroll platform "
-            "serving Mexico, the U.S. and Canada."
+            "Built payroll software used in Mexico, the U.S. and Canada, plus the React component library behind "
+            "Tress's cloud payroll product."
         ),
         detailed_description=(
-            "As a Senior Developer, I maintained and expanded core applications with React, C#, Node.js, SQL and "
-            "PostgreSQL across AWS, Azure and Docker. I led development of a payroll app where employees enroll "
-            "themselves and manage their own attendance. I also designed GTI Controls, a reusable UI component "
-            "library that powers Interis Works, a cloud payroll system built on microservices and React. Together "
-            "with Sistema Tress, it stands as a pioneer in payroll software across Mexico, the U.S. and Canada."
+            "As a Senior Developer I worked on the core apps in React, C#, Node.js, SQL and PostgreSQL, deployed on "
+            "AWS, Azure and Docker. I led a self-service app where employees enroll and track their own attendance. "
+            "I also built GTI Controls, the component library used by Interis Works, the company's cloud payroll "
+            "system running on microservices and React. Interis Works and Sistema Tress are used by companies across "
+            "Mexico, the U.S. and Canada."
         ),
         technologies=[
             "React",
@@ -62,12 +68,11 @@ projects_data = [
     Project(
         title="Hisense México",
         url="https://www.hisense.com.mx/",
-        description="Built internal platforms that raised productivity across corporate offices and the factory floor.",
+        description="Built internal tools for Hisense México's corporate offices and factory floor.",
         detailed_description=(
-            "Using C#, ASP.NET MVC and SQL, I led several projects to boost productivity across Hisense México's "
-            "corporate and manufacturing operations. That included an IT ticketing system built from scratch and "
-            "contributions to the official corporate website. The tools plugged into internal systems to streamline "
-            "manufacturing performance and surface improvements as they happened."
+            "I worked in C#, ASP.NET MVC and SQL on internal projects for the corporate office and the factory. I "
+            "built the IT ticketing system from scratch, worked on the corporate website, and wrote tools that "
+            "connected to internal systems so managers could follow manufacturing performance in real time."
         ),
         technologies=["C#", "MVC", "SQL"],
         image="hisense.png",
@@ -75,11 +80,11 @@ projects_data = [
     Project(
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
-        description="Modernized an insurance management platform for speed, usability and digital reach.",
+        description="Updated an insurance management platform to make it faster and easier to use.",
         detailed_description=(
-            "I modernized Umbrella's insurance management platform with C#, MVC, SQL, Python and JavaScript. "
-            "Beyond reworking the school insurance workflows, I maintained and extended core features, sharpening "
-            "the UX and the operational logic so the platform could scale with its users."
+            "I worked on Umbrella's insurance platform with C#, MVC, SQL, Python and JavaScript. I rebuilt the "
+            "school insurance workflows and kept extending the core features, fixing UX problems and business "
+            "logic as more customers came on."
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
@@ -87,11 +92,11 @@ projects_data = [
     Project(
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
-        description="Where it started: logistics software for the Tijuana customs office, built during my internship.",
+        description="My internship: a truck inventory system for the Tijuana customs office.",
         detailed_description=(
-            "During my internship I built a transportation inventory system used by the Tijuana customs office, "
-            "tracking trucks as they entered and left in a busy, real operation. Working in PHP, C# and SQL, this is "
-            "where clean code stopped being a theory and became a habit."
+            "During my internship I built an inventory system for the Tijuana customs office that logged trucks "
+            "coming in and out. It was written in PHP, C# and SQL, and it was the first time something I wrote got "
+            "used every day by real people."
         ),
         technologies=["PHP", "C#", "SQL"],
         image="syscoms.png",
@@ -103,48 +108,48 @@ skills_data = [
         title="Engineering Management",
         icon="TbUserCode",
         description=(
-            "I grow engineers, set clear priorities and keep delivery predictable. Honest tradeoffs, healthy "
-            "teams, and everyone knowing why we're building it this way."
+            "I mentor engineers, set priorities and keep releases on schedule. When there's a tradeoff I explain "
+            "it, and I want everyone on the team to know why we're building something the way we are."
         ),
     ),
     Skill(
-        title="Serverless on AWS",
+        title="AWS & Serverless",
         icon="FaAws",
         description=(
-            "AWS certified and serverless by default: functions, queues and managed services that scale with "
-            "demand and stay cheap when it's quiet."
+            "AWS certified, and I've used most of the platform: Lambda, API Gateway, S3, SQS, SNS, EventBridge, "
+            "Step Functions, DynamoDB, Aurora, CloudFront, CloudWatch, Cognito, IAM and CloudFormation."
         ),
     ),
     Skill(
-        title="TypeScript & Next.js",
+        title="Languages & Frameworks",
         icon="SiNextdotjs",
         description=(
-            "Typed end to end, from Next.js frontends to Node services, so refactors stay boring and bugs get "
-            "caught long before they reach review."
+            "TypeScript, JavaScript, React and Next.js day to day. Before that, years of C# and ASP.NET MVC, "
+            "plus PHP, Python and Go."
         ),
     ),
     Skill(
-        title="Data Modeling",
+        title="Databases",
         icon="SiAmazondynamodb",
         description=(
-            "DynamoDB designed around real access patterns, and MySQL where relationships matter. The data model "
-            "is the architecture, so I treat it that way."
+            "MySQL, SQL Server, PostgreSQL, Aurora and DynamoDB. I design DynamoDB tables around how the data is "
+            "read, and use a relational database when the data has real relationships. I've also worked with SAP."
         ),
     ),
     Skill(
-        title="Developer Experience",
+        title="Tooling & Delivery",
         icon="SiNeovim",
         description=(
-            "I live in Neovim and care about the tools around the team: fast feedback loops, calm CI and code "
-            "reviews that actually teach something."
+            "Neovim for writing code, GitHub Actions for CI/CD, Docker and Kubernetes for running it, Jira for "
+            "tracking the work. Photoshop and Procreate when a project needs design work."
         ),
     ),
     Skill(
         title="Security & Observability",
         icon="GrShieldSecurity",
         description=(
-            "Performance and trust go together. Analytics, error tracking and sensible security patterns, so "
-            "problems surface early and the system tells you what's wrong."
+            "I set up logging, error tracking and analytics early so problems show up before users report them, "
+            "and I keep auth, secrets and permissions locked down from the start."
         ),
     ),
 ]
@@ -162,7 +167,7 @@ navbar_data = [
 about_me_data = AboutMe(
     title="About",
     role="Engineering Manager",
-    main_stack=["TypeScript", "Next.js", "Serverless", "AWS", "DynamoDB", "MySQL"],
+    main_stack=["TypeScript", "Next.js", "Serverless", "AWS", "Lambda", "DynamoDB", "Aurora", "MySQL"],
     editor="Neovim",
     # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
     skill_levels=[
@@ -170,37 +175,54 @@ about_me_data = AboutMe(
         SkillLevel(name="Next.js", level=4),
         SkillLevel(name="Serverless", level=4),
         SkillLevel(name="AWS", level=4),
+        SkillLevel(name="Lambda", level=4),
         SkillLevel(name="DynamoDB", level=4),
+        SkillLevel(name="Aurora", level=4),
         SkillLevel(name="MySQL", level=4),
         SkillLevel(name="Node.js", level=5),
         SkillLevel(name="React", level=4),
+        SkillLevel(name="JavaScript", level=4),
+        SkillLevel(name="API Gateway", level=4),
+        SkillLevel(name="S3", level=4),
+        SkillLevel(name="SQS", level=4),
+        SkillLevel(name="SNS", level=4),
+        SkillLevel(name="EventBridge", level=4),
+        SkillLevel(name="GitHub Actions", level=4),
         SkillLevel(name="Jira", level=4),
         SkillLevel(name="Docker", level=4),
         SkillLevel(name="Kubernetes", level=4),
         SkillLevel(name="Neovim", level=4),
         SkillLevel(name="C#", level=5),
+        SkillLevel(name="MVC", level=4),
+        SkillLevel(name="SQL", level=4),
+        SkillLevel(name="PostgreSQL", level=4),
         SkillLevel(name="Python", level=4),
         SkillLevel(name="PHP", level=4),
-        SkillLevel(name="PostgreSQL", level=4),
-        SkillLevel(name="SQL", level=4),
-        SkillLevel(name="JavaScript", level=4),
-        SkillLevel(name="MVC", level=4),
+        SkillLevel(name="Go", level=3),
+        SkillLevel(name="SAP", level=3),
         SkillLevel(name="Azure", level=3),
+        SkillLevel(name="Photoshop", level=3),
+        SkillLevel(name="Procreate", level=3),
     ],
     description=(
-        "I'm Cristopher Cervantes, an engineering manager with 9+ years of shipping production software, from "
-        "quick prototypes to enterprise platforms used across three countries.\n\n"
-        "At PSL Group I lead engineering for FirstWord. I was its Tech Lead and now manage the team behind it: "
-        "setting direction, growing engineers and keeping delivery steady on a serverless TypeScript platform "
-        "built on AWS.\n\n"
-        "Day to day that means TypeScript and Next.js up front, serverless services on AWS underneath, and DynamoDB "
-        "and MySQL holding the data. Before that I worked across C# and .NET, PHP and Python, which is why I can "
-        "still get into the details with any engineer on the team.\n\n"
-        "I'm AWS certified as both a Cloud Practitioner and a Developer Associate, so infrastructure is part of "
-        "the design conversation from day one, not an afterthought before launch.\n\n"
-        "I write code in Neovim, review it with care, and believe the best teams ship with clear priorities, honest "
-        "tradeoffs and code a teammate can pick up without a tour guide. I still love the kind of problem that makes "
-        "other developers sigh dramatically."
+        "I'm Cristopher Cervantes, an engineering manager with 9+ years of experience building production "
+        "software, from small prototypes to enterprise platforms used in three countries.\n\n"
+        "I started as an intern, then worked as a Junior Developer, and moved up to Senior Developer, Tech Lead and "
+        "now Engineering Manager. Every step came from shipping, owning more of the system and helping the people "
+        "around me get better at it.\n\n"
+        "At PSL Group I manage engineering for all of our products at the production level. I joined as Tech Lead "
+        "on FirstWord, and today I'm responsible for four products running in production, each with its own stack: "
+        "PHP, Python, Node.js, React, Next.js and a lot of AWS. My job is keeping all four moving at once: "
+        "planning, setting priorities, unblocking the team and "
+        "making sure releases go out without surprises.\n\n"
+        "On the technical side that means TypeScript, React and Next.js on the frontend, Lambda and other AWS "
+        "services on the backend, DynamoDB, Aurora and MySQL for data, and GitHub Actions for deploys. Earlier on I "
+        "wrote a lot of "
+        "C# and ASP.NET MVC, along with PHP, Python, Go and some SAP work, so I can still get into the details "
+        "with anyone on the team.\n\n"
+        "I'm AWS certified as a Cloud Practitioner and a Developer Associate.\n\n"
+        "I write code in Neovim and open Photoshop or Procreate when a project needs design work. I like hard "
+        "problems, and I like code that another engineer can pick up without me walking them through it."
     ),
 )
 
