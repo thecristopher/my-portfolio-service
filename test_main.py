@@ -12,6 +12,7 @@ client = TestClient(app)
 # icon names the frontend knows how to render
 KNOWN_SKILL_ICONS = {
     "TbUserCode",
+    "TbSparkles",
     "FaAws",
     "SiNextdotjs",
     "SiAmazondynamodb",
@@ -74,6 +75,22 @@ class CopyTests(unittest.TestCase):
         names = [skill.name for skill in about_me_data.skill_levels]
         self.assertEqual(len(names), len(set(names)))
 
+    def test_main_stack_is_rated_five_out_of_five(self):
+        for tech in about_me_data.main_stack:
+            self.assertEqual(self.skill_level_map()[tech], 5)
+
+    def test_main_stack_includes_bedrock_and_llms(self):
+        self.assertIn("Bedrock", about_me_data.main_stack)
+        self.assertIn("LLMs", about_me_data.main_stack)
+
+    def test_skills_include_an_ai_card(self):
+        titles = [skill.title for skill in skills_data]
+        self.assertIn("AI & LLMs", titles)
+
+    def test_about_covers_infrastructure_through_frontend(self):
+        self.assertIn("Terraform", about_me_data.description)
+        self.assertIn("React screens", about_me_data.description)
+
     def test_csharp_and_node_are_top_rated(self):
         self.assertEqual(self.skill_level_map()["C#"], 5)
         self.assertEqual(self.skill_level_map()["Node.js"], 5)
@@ -86,7 +103,11 @@ class CopyTests(unittest.TestCase):
 
     def test_contact_only_lists_professional_socials(self):
         names = [social.name for social in contact_info_data.socials]
-        self.assertEqual(names, ["LinkedIn", "Instagram"])
+        self.assertEqual(names, ["LinkedIn", "GitHub", "Instagram"])
+
+    def test_github_points_at_the_personal_profile(self):
+        github = next(social for social in contact_info_data.socials if social.name == "GitHub")
+        self.assertEqual(github.url, "https://github.com/thecristopher")
 
 
 class RollTests(unittest.TestCase):
