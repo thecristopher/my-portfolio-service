@@ -45,3 +45,12 @@ class RollResult(BaseModel):
     roll: int
     success: bool
     message: str
+
+class GitHubRepo(BaseModel):
+    name: str
+    url: str
+    pitch: str
+    language: str | None
+    stars: int
+    forks: int
+    pushed_at: str

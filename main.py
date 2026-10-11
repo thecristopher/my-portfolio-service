@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response, Request, Cookie
+from fastapi import FastAPI, HTTPException, Response, Request, Cookie
 from fastapi.middleware.cors import CORSMiddleware
 from random import randint
 
@@ -10,7 +10,8 @@ from data import (
     contact_info_data,
 )
 
-from models import Project, Skill, NavBarItem, AboutMe, ContactInfo, RollResult
+import github
+from models import Project, Skill, NavBarItem, AboutMe, ContactInfo, RollResult, GitHubRepo
 
 
 app = FastAPI(
@@ -76,6 +77,18 @@ def get_skills():
     Retrieve the list of skills.
     """
     return skills_data
+
+
+@app.get("/github/repos", response_model=list[GitHubRepo])
+def get_github_repos():
+    """
+    Retrieve my personal GitHub repos, each pitched by its README.
+    """
+    try:
+        return github.get_repos()
+    except OSError:
+        raise HTTPException(status_code=502, detail="GitHub isn't answering right now.")
+
 
 @app.get("/roll", response_model=RollResult)
 def perception_check(

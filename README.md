@@ -1,20 +1,21 @@
 # my-portfolio-service
 
-The FastAPI backend that feeds [cristophercervantes.com](https://cristophercervantes.com). It serves the bio, work history, skills, navigation and contact info as JSON, plus a d20 roll for a little game on the site.
+The FastAPI backend that feeds [cristophercervantes.com](https://cristophercervantes.com). It serves the bio, work history, skills, navigation and contact info as JSON, my GitHub repos pitched by their READMEs, plus a d20 roll for a little game on the site.
 
 The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfolio).
 
 ## Endpoints
 
-| Method | Path        | Returns                                                                                                  |
-| ------ | ----------- | -------------------------------------------------------------------------------------------------------- |
-| `GET`  | `/`         | A health check                                                                                           |
-| `GET`  | `/navbar`   | The navigation links, in order                                                                           |
-| `GET`  | `/about`    | Bio, role, main stack, editor and skill levels                                                           |
-| `GET`  | `/projects` | Every place I've worked, with stack and description                                                      |
-| `GET`  | `/skills`   | The skill cards                                                                                          |
-| `GET`  | `/contact`  | Email, mailto link and social profiles                                                                   |
-| `GET`  | `/roll`     | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line |
+| Method | Path            | Returns                                                                                                       |
+| ------ | --------------- | ------------------------------------------------------------------------------------------------------------- |
+| `GET`  | `/`             | A health check                                                                                                |
+| `GET`  | `/navbar`       | The navigation links, in order                                                                                |
+| `GET`  | `/about`        | Bio, role, main stack, editor and skill levels                                                                |
+| `GET`  | `/projects`     | Every place I've worked, with stack and description                                                           |
+| `GET`  | `/skills`       | The skill cards                                                                                               |
+| `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
+| `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |
+| `GET`  | `/roll`         | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line      |
 
 FastAPI also serves interactive docs at `/docs` and `/redoc` while it runs.
 
@@ -30,6 +31,8 @@ uvicorn main:app --reload
 ```
 
 The API runs at `http://localhost:8000`. CORS allows `http://localhost:5173` (the Vite dev server) and the production domain. Add any other origin to `origins` in `main.py`.
+
+`/github/repos` works without credentials, but GitHub only allows 60 anonymous requests an hour. Set `GITHUB_TOKEN` to any personal access token (no scopes needed for public repos) to raise that to 5000.
 
 ## Tests
 
