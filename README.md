@@ -6,15 +6,15 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 
 ## Endpoints
 
-| Method | Path | Returns |
-| --- | --- | --- |
-| `GET` | `/` | A health check |
-| `GET` | `/navbar` | The navigation links, in order |
-| `GET` | `/about` | Bio, role, main stack, editor and skill levels |
-| `GET` | `/projects` | Every place I've worked, with stack and description |
-| `GET` | `/skills` | The skill cards |
-| `GET` | `/contact` | Email, mailto link and social profiles |
-| `GET` | `/roll` | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line |
+| Method | Path        | Returns                                                                                                  |
+| ------ | ----------- | -------------------------------------------------------------------------------------------------------- |
+| `GET`  | `/`         | A health check                                                                                           |
+| `GET`  | `/navbar`   | The navigation links, in order                                                                           |
+| `GET`  | `/about`    | Bio, role, main stack, editor and skill levels                                                           |
+| `GET`  | `/projects` | Every place I've worked, with stack and description                                                      |
+| `GET`  | `/skills`   | The skill cards                                                                                          |
+| `GET`  | `/contact`  | Email, mailto link and social profiles                                                                   |
+| `GET`  | `/roll`     | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line |
 
 FastAPI also serves interactive docs at `/docs` and `/redoc` while it runs.
 
