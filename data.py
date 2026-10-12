@@ -6,17 +6,14 @@ projects_data = [
         title="PSL Group / FirstWord",
         url="https://www.pslgroup.com/",
         description=(
-            "I manage engineering for all of PSL Group's products in production, including FirstWord, a pharma and "
-            "healthcare intelligence platform: web apps, newsletters, content feeds and an AI assistant on Bedrock."
+            "I run engineering for PSL Group's four products. The big one is FirstWord, pharma and healthcare "
+            "intel served as web apps, newsletters, feeds and an AI assistant."
         ),
         detailed_description=(
-            "I joined as Tech Lead on FirstWord and now manage engineering for all four of our products, while "
-            "still writing a lot of the code. One React codebase runs three brands, and I built FirstWord Manager, "
-            "the Next.js workspace the team runs newsletters, alerts and feeds from. "
-            "Behind it is a serverless TypeScript API on Lambda and DynamoDB that also powers FirstWord AI: "
-            "versioned agents talking to Claude through Amazon Bedrock, with streaming, guardrails and a knowledge "
-            "base. Infrastructure is Terraform and EKS with ArgoCD, deployed by shared GitHub Actions workflows I "
-            "maintain."
+            "Joined as Tech Lead and grew into managing the team. Highlights: one "
+            "React codebase serving three brands, FirstWord Manager (the Next.js workspace the team runs everything "
+            "from) and FirstWord AI, versioned Claude agents on Bedrock with streaming and guardrails. I also own "
+            "the shared deploy pipelines and set up the Claude Code tooling the whole team uses."
         ),
         technologies=[
             "TypeScript",
@@ -35,16 +32,10 @@ projects_data = [
     Project(
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
-        description=(
-            "Built payroll software used in Mexico, the U.S. and Canada, plus the React component library behind "
-            "Tress's cloud payroll product."
-        ),
+        description="Payroll software used by companies across Mexico, the U.S. and Canada.",
         detailed_description=(
-            "As a Senior Developer I worked on the core apps in React, C#, Node.js, SQL and PostgreSQL, deployed on "
-            "AWS, Azure and Docker. I led a self-service app where employees enroll and track their own attendance. "
-            "I also built GTI Controls, the component library used by Interis Works, the company's cloud payroll "
-            "system running on microservices and React. Interis Works and Sistema Tress are used by companies across "
-            "Mexico, the U.S. and Canada."
+            "As Senior Developer I led a self service app where employees track their own attendance, and built GTI "
+            "Controls, the React component library behind Interis Works, Tress's cloud payroll product."
         ),
         technologies=["React", "C#", "Node.js", "PostgreSQL", "AWS", "Azure"],
         image="grupotress.jpg",
@@ -52,7 +43,7 @@ projects_data = [
     Project(
         title="Hisense México",
         url="https://www.hisense.com.mx/",
-        description="Built internal tools for Hisense México's corporate offices and factory floor.",
+        description="Internal tools for the office and factory floor, including the IT ticketing system.",
         detailed_description=(
             "I worked in C#, ASP.NET MVC and SQL on internal projects for the corporate office and the factory. I "
             "built the IT ticketing system from scratch, worked on the corporate website, and wrote tools that "
@@ -65,7 +56,7 @@ projects_data = [
     Project(
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
-        description="Updated an insurance management platform to make it faster and easier to use.",
+        description="Rebuilt the school insurance workflows on their management platform.",
         detailed_description=(
             "I worked on Umbrella's insurance platform with C#, MVC, SQL, Python and JavaScript. I rebuilt the "
             "school insurance workflows and kept extending the core features, fixing UX problems and business "
@@ -78,7 +69,7 @@ projects_data = [
     Project(
         title="Systems Communications",
         url="https://www.systemscomm.net/es/inicio/",
-        description="My internship: a truck inventory system for the Tijuana customs office.",
+        description="Internship. Built the truck log for the Tijuana customs office, my first code in daily use.",
         detailed_description=(
             "During my internship I built an inventory system for the Tijuana customs office that logged trucks "
             "coming in and out. It was written in PHP, C# and SQL, and it was the first time something I wrote got "
@@ -92,51 +83,50 @@ projects_data = [
 
 skills_data = [
     Skill(
-        title="Engineering Management",
+        title="Leading Teams",
         icon="TbUserCode",
         description=(
-            "I mentor engineers, set priorities and keep releases on schedule, and I make sure everyone knows why "
-            "we're building something the way we are."
+            "1:1s, code reviews and release planning. I'd rather unblock five people than write the clever thing "
+            "myself."
         ),
     ),
     Skill(
         title="AI & LLMs",
         icon="TbSparkles",
         description=(
-            "Agents on Amazon Bedrock with Claude that ship to real users: streaming, tool use, guardrails and "
-            "knowledge bases. I also roll out AI coding tools so the whole team gets faster."
+            "LLM features are still features: they need guardrails, tests and a way to roll back. No demo magic "
+            "that falls over in production."
         ),
     ),
     Skill(
-        title="AWS & Infrastructure",
+        title="Cloud & Infra",
         icon="FaAws",
         description=(
-            "AWS certified. Serverless on Lambda and DynamoDB, Terraform for the infrastructure, Kubernetes with "
-            "ArgoCD to run it, and shared GitHub Actions so every repo deploys the same way."
+            "Functions when traffic is spiky, containers when it isn't, and all of it in code so nobody is "
+            "clicking around a console."
         ),
     ),
     Skill(
-        title="Full Stack",
-        icon="SiNextdotjs",
+        title="Frontend & UX",
+        icon="TbLayoutDashboard",
         description=(
-            "TypeScript, React, Next.js and Node.js day to day, PHP on the older services, and years of C# before "
-            "that. Design systems and multi brand apps from a single codebase."
+            "I sweat the small stuff: loading states, dark mode, i18n and copy that sounds like a person wrote it."
         ),
     ),
     Skill(
         title="Data & Search",
         icon="TbDatabase",
         description=(
-            "DynamoDB, Aurora, MySQL and PostgreSQL for storage, OpenSearch for feeds and full text search. I model "
-            "the data around how it gets read."
+            "Model the data around how it gets read, then make sure the indexes agree. NoSQL when the access "
+            "patterns are known, SQL when the data has real relationships."
         ),
     ),
     Skill(
         title="Quality & Security",
         icon="TbTestPipe",
         description=(
-            "Unit and end to end tests in CI, logging and error tracking from day one, and auth and secrets locked "
-            "down from the start."
+            "Tests are how the next engineer trusts my code. CI blocks the merge, alerts exist before launch and "
+            "secrets never live in the repo."
         ),
     ),
 ]
@@ -179,11 +169,9 @@ about_me_data = AboutMe(
         SkillLevel(name="Azure", level=3),
     ],
     description=(
-        "9+ years of building production software, from early prototypes to enterprise platforms used in "
-        "three countries.\n\n"
-        "I worked my way up from intern to Engineering Manager, and I've touched every layer on the way: "
-        "Terraform and Kubernetes, APIs, databases and LLM integrations, up to the React screens people click "
-        "on. That's why I can still go deep with anyone on the team, wherever the problem lives."
+        "9+ years of shipping software taught me the code is the easy part. The hard part is a team that knows "
+        "what to build and why.\n\n"
+        "Off the clock it's video games and anime, which might explain a few things hidden around this page."
     ),
 )
 

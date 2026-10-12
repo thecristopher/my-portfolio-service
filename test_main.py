@@ -18,7 +18,6 @@ KNOWN_SKILL_ICONS = {
     "TbTestPipe",
     "FaAws",
     "SiNextdotjs",
-    "SiAmazondynamodb",
     "SiNeovim",
     "GrShieldSecurity",
 }
@@ -90,9 +89,21 @@ class CopyTests(unittest.TestCase):
         titles = [skill.title for skill in skills_data]
         self.assertIn("AI & LLMs", titles)
 
-    def test_about_covers_infrastructure_through_frontend(self):
-        self.assertIn("Terraform", about_me_data.description)
-        self.assertIn("React screens", about_me_data.description)
+    def test_about_and_skills_leave_the_tools_to_the_work_tags(self):
+        # the stack already shows in the work tags and the skill bars, so the prose talks about how, not what
+        prose = [about_me_data.description, *(skill.description for skill in skills_data)]
+        for tool in about_me_data.main_stack + ["Terraform", "Kubernetes", "Lambda", "DynamoDB"]:
+            for text in prose:
+                self.assertNotIn(tool, text)
+
+    def test_no_sentence_is_said_twice(self):
+        sentences = [
+            sentence.strip().lower()
+            for text in all_copy()
+            for sentence in re.split(r"[.!?]\s", text)
+            if sentence.strip()
+        ]
+        self.assertEqual(len(sentences), len(set(sentences)))
 
     def test_skill_cards_fill_complete_rows_of_three(self):
         self.assertEqual(len(skills_data) % 3, 0)
