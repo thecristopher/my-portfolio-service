@@ -13,17 +13,23 @@ from models import (
 # Data for the portfolio projects and skills
 projects_data = [
     Project(
-        title="PSL Group / FirstWord",
+        title="PSL Group",
         url="https://www.pslgroup.com/",
         description=(
-            "I run engineering for PSL Group's four products. The big one is FirstWord, pharma and healthcare "
-            "intel served as web apps, newsletters, feeds and an AI assistant."
+            "I run engineering for four of PSL Group's products: DGPL, AMI, IDH and MEC. I set the priorities, lead "
+            "the team and still review and write plenty of the code."
         ),
+        # the frontend splits this on blank lines, one paragraph per chapter of the role
         detailed_description=(
-            "Joined as Tech Lead and grew into managing the team. Highlights: one "
-            "React codebase serving three brands, FirstWord Manager (the Next.js workspace the team runs everything "
-            "from) and FirstWord AI, versioned Claude agents on Bedrock with streaming and guardrails. I also own "
-            "the shared deploy pipelines and set up the Claude Code tooling the whole team uses."
+            "I joined as Tech Lead on FirstWord, PSL's pharma and healthcare intelligence platform, and grew into "
+            "managing engineering across the group's products.\n\n"
+            "On FirstWord I built one React codebase serving three brands, FirstWord Manager (the Next.js workspace "
+            "the team runs everything from) and FirstWord AI, versioned Claude agents on Bedrock with streaming and "
+            "guardrails.\n\n"
+            "Today I split my week between product and code: planning the roadmap for DGPL, AMI, IDH and MEC, running "
+            "1:1s, and pushing back on pull requests with alternatives until the team lands something better. I also "
+            "own the shared deploy pipelines and the infrastructure as code, and set up the Claude Code tooling the "
+            "whole team works with."
         ),
         technologies=[
             "TypeScript",
@@ -48,10 +54,17 @@ projects_data = [
     Project(
         title="Grupo Tress",
         url="https://www.tress.com.mx/",
-        description="Payroll software used by companies across Mexico, the U.S. and Canada.",
+        description=(
+            "Payroll and HR software used by companies across Mexico, the U.S. and Canada. I joined as a developer "
+            "and grew into a Senior Developer leading features end to end."
+        ),
         detailed_description=(
-            "As Senior Developer I led a self service app where employees track their own attendance, and built GTI "
-            "Controls, the React component library behind Interis Works, Tress's cloud payroll product."
+            "As Senior Developer I led the self service app where employees track their own attendance, owning it "
+            "from the first screens to production.\n\n"
+            "I also built GTI Controls, the React component library behind Interis Works, Tress's cloud payroll "
+            "product, so every team shipped screens that looked and behaved the same.\n\n"
+            "Along the way I worked across the C# and Node.js services, the PostgreSQL databases and the cloud "
+            "deployments on AWS and Azure."
         ),
         technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
         image="grupotress.jpg",
@@ -59,11 +72,12 @@ projects_data = [
     Project(
         title="Hisense México",
         url="https://www.hisense.com.mx/",
-        description="Internal tools for the office and factory floor, including the IT ticketing system.",
+        description="Internal tools for the corporate office and the factory floor, including the IT ticketing system.",
         detailed_description=(
-            "I worked in C#, ASP.NET MVC and SQL on internal projects for the corporate office and the factory. I "
-            "built the IT ticketing system from scratch, worked on the corporate website, and wrote tools that "
-            "connected to internal systems so managers could follow manufacturing performance in real time."
+            "I built the IT ticketing system from scratch in C#, ASP.NET MVC and SQL, and it became how the whole "
+            "office asked for help.\n\n"
+            "I also worked on the corporate website and wrote tools that connected to internal systems so managers "
+            "could follow manufacturing performance in real time."
         ),
         technologies=["C#", "MVC", "SQL"],
         image="hisense.png",
@@ -75,8 +89,9 @@ projects_data = [
         description="Rebuilt the school insurance workflows on their management platform.",
         detailed_description=(
             "I worked on Umbrella's insurance platform with C#, MVC, SQL, Python and JavaScript. I rebuilt the "
-            "school insurance workflows and kept extending the core features, fixing UX problems and business "
-            "logic as more customers came on."
+            "school insurance workflows from the ground up.\n\n"
+            "As more customers came on I kept extending the core features, fixing UX problems and tightening the "
+            "business logic so the platform could grow with them."
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
@@ -88,8 +103,9 @@ projects_data = [
         description="Internship. Built the truck log for the Tijuana customs office, my first code in daily use.",
         detailed_description=(
             "During my internship I built an inventory system for the Tijuana customs office that logged trucks "
-            "coming in and out. It was written in PHP, C# and SQL, and it was the first time something I wrote got "
-            "used every day by real people."
+            "coming in and out, written in PHP, C# and SQL.\n\n"
+            "It was the first time something I wrote got used every day by real people, and the reason I never "
+            "looked back."
         ),
         technologies=["PHP", "C#", "SQL"],
         image="syscoms.png",
@@ -233,14 +249,16 @@ about_me_data = AboutMe(
         Certification(name="AWS Certified Cloud Practitioner", issuer="Amazon Web Services", level="Foundational"),
     ],
     description=(
-        "9+ years of shipping software taught me the code is the easy part. The hard part is a team that knows "
-        "what to build and why.\n\n"
-        "I started as an intern and worked my way up through senior developer and tech lead to engineering "
-        "manager. So I can still pair on a gnarly bug, review a pull request line by line or sketch the "
-        "architecture, then go sort out the roadmap.\n\n"
-        "I explain every tradeoff so nobody has to guess why we built something the way we did, and I aim for "
-        "code the next engineer can pick up on their own.\n\n"
-        "Off the clock it's video games and anime, which might explain a few things hidden around this page."
+        "I started like everyone else, as an intern who could barely scratch out a few lines of code. Over 9+ "
+        "years I climbed one step at a time, until I became one of the key developers at every company I've "
+        "worked for.\n\n"
+        "I challenge myself every day and I'm always after continuous improvement, both in myself and in the "
+        "products I help build.\n\n"
+        "Today I'm a mix of Engineering Manager and Tech Lead. I don't just set the priorities for my products, I "
+        "also suggest alternatives and solutions to the code my developers propose, and push them so that "
+        "together we always land a better result.\n\n"
+        "Off the clock I love working out, spending time with my family, and every now and then reading some "
+        "manga or playing video games. By the way, have you tried finding the easter eggs scattered around here?"
     ),
 )
 
