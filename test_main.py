@@ -31,6 +31,7 @@ def all_copy():
     for skill in skills_data:
         yield skill.title
         yield skill.description
+        yield skill.effect
 
 
 class CopyTests(unittest.TestCase):
@@ -122,6 +123,12 @@ class CopyTests(unittest.TestCase):
 
     def test_skill_levels_stay_a_short_list(self):
         self.assertLessEqual(len(about_me_data.skill_levels), 20)
+
+    def test_every_skill_card_has_duel_stats(self):
+        for skill in skills_data:
+            self.assertGreater(skill.attack, 0)
+            self.assertGreater(skill.defense, 0)
+            self.assertTrue(skill.effect)
 
     def test_about_leaves_the_greeting_to_the_hero(self):
         self.assertNotIn("I'm Cristopher", about_me_data.description)

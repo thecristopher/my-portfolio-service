@@ -21,6 +21,10 @@ class Skill(BaseModel):
     title: str
     icon: str
     description: str
+    # the duel monster stats the skill card shows while the magician's buff is on
+    attack: int = 0
+    defense: int = 0
+    effect: str = ""
     
 class NavBarItem(BaseModel):
     title: str
