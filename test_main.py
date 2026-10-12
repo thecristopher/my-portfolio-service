@@ -100,6 +100,18 @@ class CopyTests(unittest.TestCase):
     def test_skill_levels_split_evenly_into_two_columns(self):
         self.assertEqual(len(about_me_data.skill_levels) % 2, 0)
 
+    def test_featured_roles_come_before_the_earlier_ones(self):
+        flags = [project.featured for project in projects_data]
+        self.assertEqual(flags, sorted(flags, reverse=True))
+        self.assertTrue(projects_data[0].featured)
+
+    def test_projects_list_at_most_ten_tools(self):
+        for project in projects_data:
+            self.assertLessEqual(len(project.technologies), 10)
+
+    def test_skill_levels_stay_a_short_list(self):
+        self.assertLessEqual(len(about_me_data.skill_levels), 20)
+
     def test_about_leaves_the_greeting_to_the_hero(self):
         self.assertNotIn("I'm Cristopher", about_me_data.description)
 

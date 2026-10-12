@@ -14,6 +14,8 @@ class Project(BaseModel):
     url: str
     technologies: list[str]
     image: str
+    # older roles render as a compact list instead of a full card
+    featured: bool = True
     
 class Skill(BaseModel): 
     title: str

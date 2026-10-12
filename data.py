@@ -10,19 +10,13 @@ projects_data = [
             "healthcare intelligence platform: web apps, newsletters, content feeds and an AI assistant on Bedrock."
         ),
         detailed_description=(
-            "I joined as Tech Lead on FirstWord and now manage engineering for all four of our products in "
-            "production. I set priorities, review architecture, mentor the engineers and keep releases on a "
-            "regular schedule, and I still write a lot of the code. "
-            "On the frontend, one React codebase runs three brands (FirstWord Pharma, HealthTech and Reports), "
-            "and I built FirstWord Manager, the Next.js workspace the team uses for newsletters, news alerts, "
-            "OpenSearch feeds, SSO clients and user access. "
-            "Behind it sits a serverless API in TypeScript on Lambda, API Gateway and DynamoDB that also powers "
-            "FirstWord AI: versioned agents that talk to Claude through Amazon Bedrock, with streaming "
-            "responses, guardrails and a knowledge base. "
-            "The older services are Symfony and PHP on MySQL and Aurora, plus the SSO and newsletter pipelines. "
-            "Infrastructure is Terraform across our AWS accounts, apps run on EKS through ArgoCD, and every repo "
-            "deploys with shared GitHub Actions workflows I maintain. I also set up the Claude Code tooling the "
-            "whole team uses day to day."
+            "I joined as Tech Lead on FirstWord and now manage engineering for all four of our products, while "
+            "still writing a lot of the code. One React codebase runs three brands, and I built FirstWord Manager, "
+            "the Next.js workspace the team runs newsletters, alerts and feeds from. "
+            "Behind it is a serverless TypeScript API on Lambda and DynamoDB that also powers FirstWord AI: "
+            "versioned agents talking to Claude through Amazon Bedrock, with streaming, guardrails and a knowledge "
+            "base. Infrastructure is Terraform and EKS with ArgoCD, deployed by shared GitHub Actions workflows I "
+            "maintain."
         ),
         technologies=[
             "TypeScript",
@@ -33,18 +27,8 @@ projects_data = [
             "Serverless",
             "Bedrock",
             "LLMs",
-            "Lambda",
-            "DynamoDB",
-            "Aurora",
-            "MySQL",
-            "OpenSearch",
             "Terraform",
             "Kubernetes",
-            "GitHub Actions",
-            "PHP",
-            "Symfony",
-            "Docker",
-            "Jira",
         ],
         image="psl.png",
     ),
@@ -62,16 +46,7 @@ projects_data = [
             "system running on microservices and React. Interis Works and Sistema Tress are used by companies across "
             "Mexico, the U.S. and Canada."
         ),
-        technologies=[
-            "React",
-            "C#",
-            "AWS",
-            "Azure",
-            "Docker",
-            "Node.js",
-            "SQL",
-            "PostgreSQL",
-        ],
+        technologies=["React", "C#", "Node.js", "PostgreSQL", "AWS", "Azure"],
         image="grupotress.jpg",
     ),
     Project(
@@ -85,6 +60,7 @@ projects_data = [
         ),
         technologies=["C#", "MVC", "SQL"],
         image="hisense.png",
+        featured=False,
     ),
     Project(
         title="Umbrella Seguros",
@@ -97,6 +73,7 @@ projects_data = [
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
         image="umbrella.jpg",
+        featured=False,
     ),
     Project(
         title="Systems Communications",
@@ -109,6 +86,7 @@ projects_data = [
         ),
         technologies=["PHP", "C#", "SQL"],
         image="syscoms.png",
+        featured=False,
     ),
 ]
 
@@ -117,74 +95,48 @@ skills_data = [
         title="Engineering Management",
         icon="TbUserCode",
         description=(
-            "I mentor engineers, set priorities and keep releases on schedule. When there's a tradeoff I explain "
-            "it, and I want everyone on the team to know why we're building something the way we are."
+            "I mentor engineers, set priorities and keep releases on schedule, and I make sure everyone knows why "
+            "we're building something the way we are."
         ),
     ),
     Skill(
         title="AI & LLMs",
         icon="TbSparkles",
         description=(
-            "I build LLM features that ship to real users: agents on Amazon Bedrock with Claude, streaming "
-            "responses, tool use, guardrails and knowledge bases. I also roll out AI coding tools so the whole "
-            "team gets faster, not just me."
+            "Agents on Amazon Bedrock with Claude that ship to real users: streaming, tool use, guardrails and "
+            "knowledge bases. I also roll out AI coding tools so the whole team gets faster."
         ),
     ),
     Skill(
-        title="AWS & Serverless",
+        title="AWS & Infrastructure",
         icon="FaAws",
         description=(
-            "AWS certified, and I've used most of the platform: Lambda, API Gateway, Bedrock, S3, SQS, SNS, "
-            "EventBridge, Step Functions, DynamoDB, Aurora, OpenSearch, CloudFront and Cognito. DynamoDB when the "
-            "access patterns are known, a relational database when the data has real relationships."
+            "AWS certified. Serverless on Lambda and DynamoDB, Terraform for the infrastructure, Kubernetes with "
+            "ArgoCD to run it, and shared GitHub Actions so every repo deploys the same way."
         ),
     ),
     Skill(
-        title="Languages & Frameworks",
+        title="Full Stack",
         icon="SiNextdotjs",
         description=(
-            "TypeScript, React, Next.js and Node.js day to day, plus PHP and Symfony on the older services. "
-            "Before that, years of C# and ASP.NET MVC, with some Python and Go along the way."
-        ),
-    ),
-    Skill(
-        title="Frontend & UX",
-        icon="TbLayoutDashboard",
-        description=(
-            "Design systems, component libraries and multi brand apps from a single codebase. I care about the "
-            "small stuff too: loading states, dark mode, i18n and copy that sounds like a person wrote it."
+            "TypeScript, React, Next.js and Node.js day to day, PHP on the older services, and years of C# before "
+            "that. Design systems and multi brand apps from a single codebase."
         ),
     ),
     Skill(
         title="Data & Search",
         icon="TbDatabase",
         description=(
-            "MySQL, Aurora, PostgreSQL and DynamoDB for storage, OpenSearch for feeds and full text search. I "
-            "model the data around how it gets read, then make sure the indexes agree."
+            "DynamoDB, Aurora, MySQL and PostgreSQL for storage, OpenSearch for feeds and full text search. I model "
+            "the data around how it gets read."
         ),
     ),
     Skill(
-        title="Testing & Quality",
+        title="Quality & Security",
         icon="TbTestPipe",
         description=(
-            "Jest and Vitest for units, Cypress and Playwright for the flows users actually click through, and "
-            "CI that blocks the merge when coverage drops. Tests are how the next engineer trusts my code."
-        ),
-    ),
-    Skill(
-        title="Infrastructure & Delivery",
-        icon="SiNeovim",
-        description=(
-            "Terraform for the infrastructure, Docker and Kubernetes with ArgoCD for running it, and shared GitHub "
-            "Actions workflows so every repo deploys the same way. Neovim for writing all of it."
-        ),
-    ),
-    Skill(
-        title="Security & Observability",
-        icon="GrShieldSecurity",
-        description=(
-            "I set up logging, error tracking and audit trails early so problems show up before users report "
-            "them, and I keep auth, secrets and permissions locked down from the start."
+            "Unit and end to end tests in CI, logging and error tracking from day one, and auth and secrets locked "
+            "down from the start."
         ),
     ),
 ]
@@ -205,6 +157,7 @@ about_me_data = AboutMe(
     main_stack=["TypeScript", "Next.js", "React", "Node.js", "AWS", "Serverless", "Bedrock", "LLMs"],
     editor="Neovim",
     # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
+    # self rated out of 5: the main stack first, then the other tools named in the work history
     skill_levels=[
         SkillLevel(name="TypeScript", level=5),
         SkillLevel(name="Next.js", level=5),
@@ -214,49 +167,23 @@ about_me_data = AboutMe(
         SkillLevel(name="Serverless", level=5),
         SkillLevel(name="Bedrock", level=5),
         SkillLevel(name="LLMs", level=5),
-        SkillLevel(name="Lambda", level=5),
-        SkillLevel(name="DynamoDB", level=5),
-        SkillLevel(name="API Gateway", level=5),
-        SkillLevel(name="JavaScript", level=5),
-        SkillLevel(name="Aurora", level=4),
-        SkillLevel(name="MySQL", level=4),
-        SkillLevel(name="OpenSearch", level=4),
-        SkillLevel(name="S3", level=4),
-        SkillLevel(name="SQS", level=4),
-        SkillLevel(name="SNS", level=4),
-        SkillLevel(name="EventBridge", level=4),
-        SkillLevel(name="Step Functions", level=4),
-        SkillLevel(name="Terraform", level=4),
-        SkillLevel(name="Docker", level=4),
-        SkillLevel(name="Kubernetes", level=4),
-        SkillLevel(name="ArgoCD", level=4),
-        SkillLevel(name="GitHub Actions", level=4),
-        SkillLevel(name="Jest", level=4),
-        SkillLevel(name="PHP", level=4),
-        SkillLevel(name="Symfony", level=4),
-        SkillLevel(name="Jira", level=4),
-        SkillLevel(name="Neovim", level=4),
         SkillLevel(name="C#", level=5),
-        SkillLevel(name="MVC", level=4),
-        SkillLevel(name="SQL", level=4),
+        SkillLevel(name="JavaScript", level=5),
+        SkillLevel(name="Terraform", level=4),
+        SkillLevel(name="Kubernetes", level=4),
         SkillLevel(name="PostgreSQL", level=4),
+        SkillLevel(name="SQL", level=4),
+        SkillLevel(name="MVC", level=4),
+        SkillLevel(name="PHP", level=4),
         SkillLevel(name="Python", level=4),
-        SkillLevel(name="Go", level=3),
-        SkillLevel(name="SAP", level=3),
         SkillLevel(name="Azure", level=3),
-        SkillLevel(name="Photoshop", level=3),
-        SkillLevel(name="Procreate", level=3),
     ],
     description=(
         "9+ years of building production software, from early prototypes to enterprise platforms used in "
         "three countries.\n\n"
-        "I worked my way up from intern to Senior Developer, Tech Lead and Engineering Manager. Today I lead "
-        "engineering across several products in production: setting priorities, unblocking people and shipping "
-        "releases without surprises.\n\n"
-        "I've worked every stage of the software lifecycle, from Terraform, Kubernetes and CI/CD pipelines, "
-        "through APIs, databases and LLM integrations, all the way up to the React screens people actually "
-        "click on. That's why I can still go deep with anyone on the team, wherever the problem lives. I like "
-        "hard problems, and software the next engineer can pick up on their own."
+        "I worked my way up from intern to Engineering Manager, and I've touched every layer on the way: "
+        "Terraform and Kubernetes, APIs, databases and LLM integrations, up to the React screens people click "
+        "on. That's why I can still go deep with anyone on the team, wherever the problem lives."
     ),
 )
 
