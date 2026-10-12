@@ -1,4 +1,14 @@
-from models import Project, Skill, SkillLevel, NavBarItem, AboutMe, ContactInfo, SocialLink
+from models import (
+    AboutMe,
+    Certification,
+    ContactInfo,
+    Education,
+    NavBarItem,
+    Project,
+    Skill,
+    SkillLevel,
+    SocialLink,
+)
 
 # Data for the portfolio projects and skills
 projects_data = [
@@ -24,8 +34,14 @@ projects_data = [
             "Serverless",
             "Bedrock",
             "LLMs",
+            "Lambda",
+            "DynamoDB",
+            "Aurora",
+            "OpenSearch",
             "Terraform",
             "Kubernetes",
+            "GitHub Actions",
+            "PHP",
         ],
         image="psl.png",
     ),
@@ -37,7 +53,7 @@ projects_data = [
             "As Senior Developer I led a self service app where employees track their own attendance, and built GTI "
             "Controls, the React component library behind Interis Works, Tress's cloud payroll product."
         ),
-        technologies=["React", "C#", "Node.js", "PostgreSQL", "AWS", "Azure"],
+        technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
         image="grupotress.jpg",
     ),
     Project(
@@ -81,53 +97,76 @@ projects_data = [
     ),
 ]
 
+# attack, defense and effect only show once Dark Magician Girl buffs the page and every card becomes a duel monster
 skills_data = [
     Skill(
         title="Leading Teams",
         icon="TbUserCode",
         description=(
-            "1:1s, code reviews and release planning. I'd rather unblock five people than write the clever thing "
-            "myself."
+            "I mentor engineers, run 1:1s and code reviews, set priorities and keep releases on a steady schedule. "
+            "I'd rather unblock five people than write the clever thing myself."
         ),
+        attack=2500,
+        defense=2100,
+        effect="Once per sprint: every engineer on your side of the field is unblocked.",
     ),
     Skill(
         title="AI & LLMs",
         icon="TbSparkles",
         description=(
-            "LLM features are still features: they need guardrails, tests and a way to roll back. No demo magic "
-            "that falls over in production."
+            "LLM features are still features: they need guardrails, tests and a fallback for when the model gets it "
+            "wrong. I've shipped AI that people use every day, and I'd take a boring correct answer over a flashy "
+            "wrong one."
         ),
+        attack=2800,
+        defense=1700,
+        effect="When a model hallucinates, negate it and return a grounded answer instead.",
     ),
     Skill(
         title="Cloud & Infra",
         icon="FaAws",
         description=(
-            "Functions when traffic is spiky, containers when it isn't, and all of it in code so nobody is "
-            "clicking around a console."
+            "Functions when traffic is spiky, containers when it isn't. Every environment lives in code and every "
+            "repo ships through the same pipeline, so deploys are boring in the best way."
         ),
+        attack=2300,
+        defense=2800,
+        effect="Cannot be destroyed by a Friday deploy.",
     ),
     Skill(
         title="Frontend & UX",
         icon="TbLayoutDashboard",
         description=(
-            "I sweat the small stuff: loading states, dark mode, i18n and copy that sounds like a person wrote it."
+            "Design systems and component libraries a whole product, or several brands, can share. I sweat the small "
+            "stuff too: loading states, dark mode, i18n and copy that sounds like a person wrote it."
         ),
+        attack=2400,
+        defense=2000,
+        effect="Flip every loading spinner on the field into a skeleton.",
     ),
     Skill(
         title="Data & Search",
         icon="TbDatabase",
         description=(
-            "Model the data around how it gets read, then make sure the indexes agree. NoSQL when the access "
-            "patterns are known, SQL when the data has real relationships."
+            "I model data around how it gets read, then make sure the indexes agree. NoSQL when the access patterns "
+            "are known, SQL when the data has real relationships, and a search engine when people need to find "
+            "things fast."
         ),
+        attack=2200,
+        defense=2500,
+        effect="Search your deck for any record and add it to your hand. Indexed, of course.",
     ),
     Skill(
         title="Quality & Security",
         icon="TbTestPipe",
         description=(
-            "Tests are how the next engineer trusts my code. CI blocks the merge, alerts exist before launch and "
-            "secrets never live in the repo."
+            "Unit tests for the logic, end to end tests for the flows people actually click, and CI that blocks the "
+            "merge when they fail. Logging, alerts and locked down secrets go in before launch, not after the first "
+            "incident."
         ),
+        attack=1900,
+        defense=3000,
+        effect="Negate any attack that skipped CI.",
     ),
 ]
 
@@ -135,6 +174,7 @@ navbar_data = [
     NavBarItem(title="Home", url="/#home"),
     NavBarItem(title="About", url="/#about"),
     NavBarItem(title="Work", url="/#work"),
+    NavBarItem(title="Education", url="/#education"),
     NavBarItem(title="Skills", url="/#skills"),
     NavBarItem(title="Contact", url="/#contact"),
 ]
@@ -159,8 +199,14 @@ about_me_data = AboutMe(
         SkillLevel(name="LLMs", level=5),
         SkillLevel(name="C#", level=5),
         SkillLevel(name="JavaScript", level=5),
+        SkillLevel(name="Lambda", level=5),
+        SkillLevel(name="DynamoDB", level=5),
+        SkillLevel(name="Aurora", level=4),
+        SkillLevel(name="OpenSearch", level=4),
         SkillLevel(name="Terraform", level=4),
         SkillLevel(name="Kubernetes", level=4),
+        SkillLevel(name="GitHub Actions", level=4),
+        SkillLevel(name="Docker", level=4),
         SkillLevel(name="PostgreSQL", level=4),
         SkillLevel(name="SQL", level=4),
         SkillLevel(name="MVC", level=4),
@@ -168,9 +214,32 @@ about_me_data = AboutMe(
         SkillLevel(name="Python", level=4),
         SkillLevel(name="Azure", level=3),
     ],
+    education=[
+        Education(
+            school="Instituto Tecnológico de Tijuana",
+            url="https://www.tijuana.tecnm.mx/",
+            location="Tijuana, Mexico",
+            degree="B.S. in Computer Systems Engineering",
+            original_name="Ingeniería en Sistemas Computacionales",
+            highlights=[
+                "Where I learned the fundamentals I still lean on: algorithms, data structures, databases, networks "
+                "and software engineering.",
+                "Part of TecNM, Mexico's national network of public engineering schools.",
+            ],
+        ),
+    ],
+    certifications=[
+        Certification(name="AWS Certified Developer \u2013 Associate", issuer="Amazon Web Services", level="Associate"),
+        Certification(name="AWS Certified Cloud Practitioner", issuer="Amazon Web Services", level="Foundational"),
+    ],
     description=(
         "9+ years of shipping software taught me the code is the easy part. The hard part is a team that knows "
         "what to build and why.\n\n"
+        "I started as an intern and worked my way up through senior developer and tech lead to engineering "
+        "manager. So I can still pair on a gnarly bug, review a pull request line by line or sketch the "
+        "architecture, then go sort out the roadmap.\n\n"
+        "I explain every tradeoff so nobody has to guess why we built something the way we did, and I aim for "
+        "code the next engineer can pick up on their own.\n\n"
         "Off the clock it's video games and anime, which might explain a few things hidden around this page."
     ),
 )
