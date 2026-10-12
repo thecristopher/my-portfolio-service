@@ -148,6 +148,23 @@ class CopyTests(unittest.TestCase):
         self.assertEqual(self.skill_level_map()["C#"], 5)
         self.assertEqual(self.skill_level_map()["Node.js"], 5)
 
+    def test_psl_pitch_names_the_four_products_it_runs(self):
+        psl = projects_data[0]
+        for product in ["DGPL", "AMI", "IDH", "MEC"]:
+            self.assertIn(product, psl.description)
+
+    def test_firstword_lives_in_the_psl_details_not_the_pitch(self):
+        psl = projects_data[0]
+        self.assertNotIn("FirstWord", psl.title + psl.description)
+        self.assertIn("FirstWord", psl.detailed_description)
+
+    def test_every_role_tells_a_longer_story_than_its_pitch(self):
+        for project in projects_data:
+            self.assertGreater(len(project.detailed_description), len(project.description))
+
+    def test_about_invites_visitors_to_hunt_the_easter_eggs(self):
+        self.assertIn("easter eggs", about_me_data.description)
+
     def test_contact_uses_the_personal_domain_email(self):
         self.assertEqual(contact_info_data.email, "contact@cristophercervantes.com")
 
