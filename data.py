@@ -1,4 +1,14 @@
-from models import Project, Skill, SkillLevel, NavBarItem, AboutMe, ContactInfo, SocialLink
+from models import (
+    AboutMe,
+    Certification,
+    ContactInfo,
+    Education,
+    NavBarItem,
+    Project,
+    Skill,
+    SkillLevel,
+    SocialLink,
+)
 
 # Data for the portfolio projects and skills
 projects_data = [
@@ -24,8 +34,14 @@ projects_data = [
             "Serverless",
             "Bedrock",
             "LLMs",
+            "Lambda",
+            "DynamoDB",
+            "Aurora",
+            "OpenSearch",
             "Terraform",
             "Kubernetes",
+            "GitHub Actions",
+            "PHP",
         ],
         image="psl.png",
     ),
@@ -37,7 +53,7 @@ projects_data = [
             "As Senior Developer I led a self service app where employees track their own attendance, and built GTI "
             "Controls, the React component library behind Interis Works, Tress's cloud payroll product."
         ),
-        technologies=["React", "C#", "Node.js", "PostgreSQL", "AWS", "Azure"],
+        technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
         image="grupotress.jpg",
     ),
     Project(
@@ -158,6 +174,7 @@ navbar_data = [
     NavBarItem(title="Home", url="/#home"),
     NavBarItem(title="About", url="/#about"),
     NavBarItem(title="Work", url="/#work"),
+    NavBarItem(title="Education", url="/#education"),
     NavBarItem(title="Skills", url="/#skills"),
     NavBarItem(title="Contact", url="/#contact"),
 ]
@@ -182,14 +199,38 @@ about_me_data = AboutMe(
         SkillLevel(name="LLMs", level=5),
         SkillLevel(name="C#", level=5),
         SkillLevel(name="JavaScript", level=5),
+        SkillLevel(name="Lambda", level=5),
+        SkillLevel(name="DynamoDB", level=5),
+        SkillLevel(name="Aurora", level=4),
+        SkillLevel(name="OpenSearch", level=4),
         SkillLevel(name="Terraform", level=4),
         SkillLevel(name="Kubernetes", level=4),
+        SkillLevel(name="GitHub Actions", level=4),
+        SkillLevel(name="Docker", level=4),
         SkillLevel(name="PostgreSQL", level=4),
         SkillLevel(name="SQL", level=4),
         SkillLevel(name="MVC", level=4),
         SkillLevel(name="PHP", level=4),
         SkillLevel(name="Python", level=4),
         SkillLevel(name="Azure", level=3),
+    ],
+    education=[
+        Education(
+            school="Instituto Tecnológico de Tijuana",
+            url="https://www.tijuana.tecnm.mx/",
+            location="Tijuana, Mexico",
+            degree="B.S. in Computer Systems Engineering",
+            original_name="Ingeniería en Sistemas Computacionales",
+            highlights=[
+                "Where I learned the fundamentals I still lean on: algorithms, data structures, databases, networks "
+                "and software engineering.",
+                "Part of TecNM, Mexico's national network of public engineering schools.",
+            ],
+        ),
+    ],
+    certifications=[
+        Certification(name="AWS Certified Developer \u2013 Associate", issuer="Amazon Web Services", level="Associate"),
+        Certification(name="AWS Certified Cloud Practitioner", issuer="Amazon Web Services", level="Foundational"),
     ],
     description=(
         "9+ years of shipping software taught me the code is the easy part. The hard part is a team that knows "

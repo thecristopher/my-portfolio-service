@@ -34,6 +34,24 @@ class SkillLevel(BaseModel):
     name: str
     level: int
 
+class Education(BaseModel):
+    school: str
+    url: str
+    location: str
+    degree: str
+    # the degree's name as it reads on the diploma
+    original_name: str
+    start_year: int | None = None
+    end_year: int | None = None
+    highlights: list[str] = []
+
+class Certification(BaseModel):
+    name: str
+    issuer: str
+    level: str
+    # a public verification link, like a Credly badge, once there is one
+    verify_url: str | None = None
+
 class AboutMe(BaseModel):
     title: str
     description: str
@@ -41,6 +59,8 @@ class AboutMe(BaseModel):
     main_stack: list[str]
     editor: str
     skill_levels: list[SkillLevel]
+    education: list[Education] = []
+    certifications: list[Certification] = []
     
 class ContactInfo(BaseModel):
     email: str

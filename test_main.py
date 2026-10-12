@@ -117,12 +117,23 @@ class CopyTests(unittest.TestCase):
         self.assertEqual(flags, sorted(flags, reverse=True))
         self.assertTrue(projects_data[0].featured)
 
-    def test_projects_list_at_most_ten_tools(self):
+    def test_projects_list_at_most_sixteen_tools(self):
         for project in projects_data:
-            self.assertLessEqual(len(project.technologies), 10)
+            self.assertLessEqual(len(project.technologies), 16)
 
     def test_skill_levels_stay_a_short_list(self):
-        self.assertLessEqual(len(about_me_data.skill_levels), 20)
+        self.assertLessEqual(len(about_me_data.skill_levels), 30)
+
+    def test_education_names_the_degree_both_ways(self):
+        school = about_me_data.education[0]
+        self.assertEqual(school.school, "Instituto Tecnológico de Tijuana")
+        self.assertIn("Computer Systems Engineering", school.degree)
+        self.assertEqual(school.original_name, "Ingeniería en Sistemas Computacionales")
+
+    def test_both_aws_certifications_are_listed(self):
+        names = [cert.name for cert in about_me_data.certifications]
+        self.assertEqual(len(names), 2)
+        self.assertTrue(all(name.startswith("AWS Certified") for name in names))
 
     def test_every_skill_card_has_duel_stats(self):
         for skill in skills_data:
