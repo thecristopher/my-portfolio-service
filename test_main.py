@@ -18,7 +18,6 @@ KNOWN_SKILL_ICONS = {
     "TbTestPipe",
     "FaAws",
     "SiNextdotjs",
-    "SiAmazondynamodb",
     "SiNeovim",
     "GrShieldSecurity",
 }
