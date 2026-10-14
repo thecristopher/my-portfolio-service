@@ -17,7 +17,14 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |
 | `GET`  | `/roll`         | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line      |
 
-FastAPI also serves interactive docs at `/docs` and `/redoc` while it runs.
+FastAPI also serves interactive docs at `/docs` and `/redoc` when it runs locally. They're switched off on Railway (detected through the `RAILWAY_ENVIRONMENT_ID` variable Railway sets), so production doesn't hand out a map of the API.
+
+## Security
+
+- CORS only lets the site's own origins read, and only with `GET`. No credentials cross origins.
+- Every response carries `nosniff`, `X-Frame-Options: DENY`, HSTS, `Referrer-Policy: no-referrer`, a locked-down `Content-Security-Policy` and a `Permissions-Policy`.
+- Each visitor gets 60 requests a minute, then a `429` with `Retry-After`. The visitor is the last address in `X-Forwarded-For`, the one Railway's proxy appends, so a forged header can't dodge the limit. The counter lives in memory, so it resets on deploy and is per instance.
+- The `/roll` cookie is `HttpOnly`, `Secure`, `SameSite=Lax` and expires after an hour.
 
 ## Running it locally
 

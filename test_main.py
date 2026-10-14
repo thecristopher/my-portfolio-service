@@ -5,9 +5,11 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from data import about_me_data, contact_info_data, projects_data, skills_data
+import main
 from main import app
 
-client = TestClient(app)
+# the roll cookie is Secure, so the test client has to talk https to get it back
+client = TestClient(app, base_url="https://testserver")
 
 # icon names the frontend knows how to render
 KNOWN_SKILL_ICONS = {
@@ -199,6 +201,62 @@ class RollTests(unittest.TestCase):
             client.get("/roll")
             body = client.get("/roll").json()
         self.assertEqual(body["message"], "Failed again. The dice are not on your side.")
+
+
+    def test_roll_cookie_is_locked_down(self):
+        with patch("main.randint", return_value=3):
+            cookie = client.get("/roll").headers["set-cookie"]
+        for flag in ["HttpOnly", "Secure", "SameSite=lax", "Max-Age=3600"]:
+            self.assertIn(flag, cookie)
+
+
+class HardeningTests(unittest.TestCase):
+    def setUp(self):
+        main._hits.clear()
+
+    def tearDown(self):
+        # leave the next test a fresh allowance
+        main._hits.clear()
+
+    def test_every_response_carries_the_security_headers(self):
+        headers = client.get("/").headers
+        for header, value in main.SECURITY_HEADERS.items():
+            self.assertEqual(headers[header], value)
+
+    def test_cors_only_allows_reads_from_the_site(self):
+        response = client.options(
+            "/projects",
+            headers={"Origin": "https://cristophercervantes.com", "Access-Control-Request-Method": "POST"},
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertNotIn("access-control-allow-credentials", client.get("/", headers={"Origin": "https://cristophercervantes.com"}).headers)
+
+    def test_cors_ignores_unknown_origins(self):
+        headers = client.get("/", headers={"Origin": "https://evil.example"}).headers
+        self.assertNotIn("access-control-allow-origin", headers)
+
+    def test_too_many_requests_get_turned_away(self):
+        for _ in range(main.RATE_LIMIT_REQUESTS):
+            self.assertEqual(client.get("/").status_code, 200)
+        response = client.get("/")
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers["Retry-After"], str(main.RATE_LIMIT_WINDOW_SECONDS))
+
+    def test_the_limit_is_per_visitor(self):
+        for _ in range(main.RATE_LIMIT_REQUESTS):
+            client.get("/", headers={"X-Forwarded-For": "1.1.1.1"})
+        self.assertEqual(client.get("/", headers={"X-Forwarded-For": "2.2.2.2"}).status_code, 200)
+
+    def test_a_forged_forwarded_for_cannot_dodge_the_limit(self):
+        for index in range(main.RATE_LIMIT_REQUESTS):
+            client.get("/", headers={"X-Forwarded-For": f"10.0.0.{index}, 1.1.1.1"})
+        self.assertEqual(client.get("/", headers={"X-Forwarded-For": "9.9.9.9, 1.1.1.1"}).status_code, 429)
+
+    def test_the_window_resets(self):
+        self.assertFalse(main.is_rate_limited("3.3.3.3", now=0))
+        for _ in range(main.RATE_LIMIT_REQUESTS):
+            main.is_rate_limited("3.3.3.3", now=1)
+        self.assertFalse(main.is_rate_limited("3.3.3.3", now=main.RATE_LIMIT_WINDOW_SECONDS + 1))
 
 
 if __name__ == "__main__":
