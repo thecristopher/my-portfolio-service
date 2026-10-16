@@ -11,7 +11,7 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | `GET`  | `/`             | A health check                                                                                                |
 | `GET`  | `/navbar`       | The navigation links, in order                                                                                |
 | `GET`  | `/about`        | Bio, role, main stack, editor and skill levels                                                                |
-| `GET`  | `/projects`     | Every place I've worked, with stack and description                                                           |
+| `GET`  | `/projects`     | Every place I've worked: stack, description, the titles I held and the years                                   |
 | `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
 | `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |

@@ -14,6 +14,7 @@ from models import (
 projects_data = [
     Project(
         title="PSL Group",
+        roles=["Tech Lead", "Engineering Manager"],
         url="https://www.pslgroup.com/",
         description=(
             "I run engineering for four of PSL Group's products: DGPL, AMI, IDH and MEC. I set the priorities, lead "
@@ -49,10 +50,10 @@ projects_data = [
             "GitHub Actions",
             "PHP",
         ],
-        image="psl.png",
     ),
     Project(
         title="Grupo Tress",
+        roles=["Developer", "Senior Developer"],
         url="https://www.tress.com.mx/",
         description=(
             "Payroll and HR software used by companies across Mexico, the U.S. and Canada. I joined as a developer "
@@ -67,7 +68,6 @@ projects_data = [
             "deployments on AWS and Azure."
         ),
         technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
-        image="grupotress.jpg",
     ),
     Project(
         title="Hisense México",
@@ -80,7 +80,6 @@ projects_data = [
             "could follow manufacturing performance in real time."
         ),
         technologies=["C#", "MVC", "SQL"],
-        image="hisense.png",
         featured=False,
     ),
     Project(
@@ -94,11 +93,11 @@ projects_data = [
             "business logic so the platform could grow with them."
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
-        image="umbrella.jpg",
         featured=False,
     ),
     Project(
         title="Systems Communications",
+        roles=["Intern"],
         url="https://www.systemscomm.net/es/inicio/",
         description="Internship. Built the truck log for the Tijuana customs office, my first code in daily use.",
         detailed_description=(
@@ -108,7 +107,6 @@ projects_data = [
             "looked back."
         ),
         technologies=["PHP", "C#", "SQL"],
-        image="syscoms.png",
         featured=False,
     ),
 ]
@@ -191,6 +189,7 @@ navbar_data = [
     NavBarItem(title="About", url="/#about"),
     NavBarItem(title="Work", url="/#work"),
     NavBarItem(title="Education", url="/#education"),
+    NavBarItem(title="Side quests", url="/#github"),
     NavBarItem(title="Skills", url="/#skills"),
     NavBarItem(title="Contact", url="/#contact"),
 ]
