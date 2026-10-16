@@ -13,7 +13,11 @@ class Project(BaseModel):
     detailed_description: str
     url: str
     technologies: list[str]
-    image: str
+    # every title held there, oldest first. the frontend draws each one as a commit in the career log
+    roles: list[str] = []
+    start_year: int | None = None
+    # None while I still work there
+    end_year: int | None = None
     # older roles render as a compact list instead of a full card
     featured: bool = True
     

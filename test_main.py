@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from data import about_me_data, contact_info_data, projects_data, skills_data
+from data import about_me_data, contact_info_data, navbar_data, projects_data, skills_data
 import main
 from main import app
 
@@ -113,6 +113,26 @@ class CopyTests(unittest.TestCase):
 
     def test_skill_levels_split_evenly_into_two_columns(self):
         self.assertEqual(len(about_me_data.skill_levels) % 2, 0)
+
+    def test_career_years_run_forward(self):
+        for project in projects_data:
+            if project.start_year and project.end_year:
+                self.assertLessEqual(project.start_year, project.end_year)
+
+    def test_only_the_current_job_is_still_open(self):
+        # the career log tags the newest commit as HEAD, so no older job may claim "present"
+        for project in projects_data[1:]:
+            if project.start_year:
+                self.assertIsNotNone(project.end_year)
+
+    def test_roles_are_named(self):
+        for project in projects_data:
+            for role in project.roles:
+                self.assertTrue(role.strip())
+
+    def test_every_nav_item_points_at_a_section(self):
+        for item in navbar_data:
+            self.assertRegex(item.url, r"^/#[a-z]+$")
 
     def test_featured_roles_come_before_the_earlier_ones(self):
         flags = [project.featured for project in projects_data]
