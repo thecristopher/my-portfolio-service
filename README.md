@@ -15,7 +15,7 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
 | `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |
-| `GET`  | `/roll`         | A d20 perception check. Fail once and it remembers with a cookie, so a second miss gets a different line      |
+| `GET`  | `/roll`         | A d20 perception check against DC 8, with its own lines for a natural 20 and a natural 1. Fail once and it remembers with a cookie, so a second miss gets a different line |
 
 FastAPI also serves interactive docs at `/docs` and `/redoc` when it runs locally. They're switched off on Railway (detected through the `RAILWAY_ENVIRONMENT_ID` variable Railway sets), so production doesn't hand out a map of the API.
 

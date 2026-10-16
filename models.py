@@ -73,6 +73,8 @@ class ContactInfo(BaseModel):
     
 class RollResult(BaseModel):
     roll: int
+    # the difficulty class the roll had to meet
+    dc: int
     success: bool
     message: str
 
