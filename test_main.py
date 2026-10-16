@@ -209,7 +209,19 @@ class RollTests(unittest.TestCase):
     def test_high_roll_passes_the_check(self):
         with patch("main.randint", return_value=18):
             body = client.get("/roll").json()
-        self.assertEqual(body, {"roll": 18, "success": True, "message": "Check passed. Nice roll."})
+        self.assertEqual(body, {"roll": 18, "dc": 8, "success": True, "message": "Check passed. Nice roll."})
+
+    def test_natural_twenty_is_a_critical_success(self):
+        with patch("main.randint", return_value=20):
+            body = client.get("/roll").json()
+        self.assertEqual(body["message"], "Natural 20! Critical success.")
+        self.assertTrue(body["success"])
+
+    def test_natural_one_is_a_critical_failure(self):
+        with patch("main.randint", return_value=1):
+            body = client.get("/roll").json()
+        self.assertEqual(body["message"], "Natural 1. Critical failure.")
+        self.assertFalse(body["success"])
 
     def test_first_low_roll_invites_another_try(self):
         with patch("main.randint", return_value=3):
