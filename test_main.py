@@ -152,6 +152,13 @@ class CopyTests(unittest.TestCase):
         self.assertIn("Computer Systems Engineering", school.degree)
         self.assertEqual(school.original_name, "Ingeniería en Sistemas Computacionales")
 
+    def test_expertise_names_skills_not_tools(self):
+        # profile.json prints this, and the tools already have the skill bars
+        self.assertTrue(about_me_data.expertise)
+        tools = {skill.name for skill in about_me_data.skill_levels}
+        for area in about_me_data.expertise:
+            self.assertNotIn(area, tools)
+
     def test_both_aws_certifications_are_listed(self):
         names = [cert.name for cert in about_me_data.certifications]
         self.assertEqual(len(names), 2)

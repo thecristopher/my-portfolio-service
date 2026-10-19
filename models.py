@@ -62,6 +62,8 @@ class AboutMe(BaseModel):
     role: str
     main_stack: list[str]
     editor: str
+    # what I'm good at, not which tools: profile.json prints it and leaves the tools to the skill bars
+    expertise: list[str] = []
     skill_levels: list[SkillLevel]
     education: list[Education] = []
     certifications: list[Certification] = []

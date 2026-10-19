@@ -201,6 +201,15 @@ about_me_data = AboutMe(
     role="Tech Lead & Engineering Manager",
     main_stack=["TypeScript", "Next.js", "React", "Node.js", "AWS", "Serverless", "Bedrock", "LLMs"],
     editor="Neovim",
+    expertise=[
+        "Engineering management",
+        "Technical leadership",
+        "AI agents and LLM products",
+        "Serverless architecture",
+        "Design systems",
+        "Infrastructure as code",
+        "CI/CD and release pipelines",
+    ],
     # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
     # self rated out of 5: the main stack first, then the other tools named in the work history
     skill_levels=[
