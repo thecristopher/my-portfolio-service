@@ -1,9 +1,12 @@
 from models import (
     AboutMe,
+    CaseStudy,
     Certification,
     ContactInfo,
     Education,
+    Language,
     NavBarItem,
+    Principle,
     Project,
     Skill,
     SkillLevel,
@@ -50,6 +53,14 @@ projects_data = [
             "GitHub Actions",
             "PHP",
         ],
+        highlights=[
+            "Grew from Tech Lead on FirstWord into Engineering Manager for DGPL, AMI, IDH and MEC",
+            "Shipped FirstWord AI: versioned Claude agents on AWS Bedrock with streaming answers and guardrails",
+            "Built a single React codebase that serves three FirstWord brands",
+            "Built FirstWord Manager, the Next.js workspace the team works from every day",
+            "Own the shared deploy pipelines and the infrastructure as code that every repo ships through",
+            "Set the roadmap, run 1:1s and code reviews, and rolled out Claude Code tooling for the whole team",
+        ],
     ),
     Project(
         title="Grupo Tress",
@@ -68,6 +79,12 @@ projects_data = [
             "deployments on AWS and Azure."
         ),
         technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
+        highlights=[
+            "Promoted from Developer to Senior Developer",
+            "Led the employee self service attendance app from the first screens to production",
+            "Built GTI Controls, the React component library behind Interis Works, so every team shipped consistent screens",
+            "Worked across C# and Node.js services, PostgreSQL databases and deployments on AWS and Azure",
+        ],
     ),
     Project(
         title="Hisense México",
@@ -80,6 +97,11 @@ projects_data = [
             "could follow manufacturing performance in real time."
         ),
         technologies=["C#", "MVC", "SQL"],
+        highlights=[
+            "Built the IT ticketing system from scratch, which became how the whole office asked for help",
+            "Connected internal systems so managers could follow manufacturing performance in real time",
+            "Worked on the corporate website",
+        ],
         featured=False,
     ),
     Project(
@@ -93,6 +115,10 @@ projects_data = [
             "business logic so the platform could grow with them."
         ),
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
+        highlights=[
+            "Rebuilt the school insurance workflows from the ground up",
+            "Extended core features, fixed UX problems and tightened business rules as the customer base grew",
+        ],
         featured=False,
     ),
     Project(
@@ -107,7 +133,112 @@ projects_data = [
             "looked back."
         ),
         technologies=["PHP", "C#", "SQL"],
+        highlights=[
+            "Built the inventory system that logged every truck in and out of the Tijuana customs office",
+        ],
         featured=False,
+    ),
+]
+
+# the work I'd walk a hiring manager through, told as challenge, approach and outcome.
+# metrics stay empty until there's a real number to put there
+case_studies_data = [
+    CaseStudy(
+        slug="firstword-ai",
+        title="FirstWord AI",
+        company="PSL Group",
+        role="Tech Lead",
+        kind="AI",
+        summary="Claude agents on AWS Bedrock that answer questions about pharma and healthcare intelligence.",
+        challenge=(
+            "FirstWord readers make decisions on what they read, so an AI feature there has to be right before it "
+            "can be impressive. A confident wrong answer costs more than no answer at all."
+        ),
+        approach=[
+            "Versioned every agent, so a prompt or model change ships and rolls back like any other release",
+            "Streamed answers to the reader while the model is still writing",
+            "Put guardrails in front of every response",
+            "Treated the model like any other dependency: tested, monitored and with a fallback",
+        ],
+        outcome="AI answers that live inside the product people already use, held to the same bar as the rest of it.",
+        technologies=["TypeScript", "Bedrock", "LLMs", "Lambda", "Serverless", "React"],
+    ),
+    CaseStudy(
+        slug="firstword-brands",
+        title="One codebase, three brands",
+        company="PSL Group",
+        role="Tech Lead",
+        kind="Frontend",
+        summary="A single React codebase that serves every FirstWord brand.",
+        challenge="Three brands that each need their own look would normally mean three apps drifting apart.",
+        approach=[
+            "Built one React codebase with the brand as configuration, not as a fork",
+            "Shared components, data fetching and tests across every brand",
+            "Built FirstWord Manager in Next.js as the workspace the team runs everything from",
+        ],
+        outcome="A fix or a feature lands once and every brand gets it.",
+        technologies=["React", "Next.js", "TypeScript", "Node.js"],
+    ),
+    CaseStudy(
+        slug="shared-pipelines",
+        title="Pipelines every team ships through",
+        company="PSL Group",
+        role="Engineering Manager",
+        kind="Platform",
+        summary="Shared deploy pipelines, infrastructure as code and Claude Code tooling for the whole team.",
+        challenge="Every repo deploying its own way makes releases slow to review and scary to run.",
+        approach=[
+            "Moved environments into infrastructure as code",
+            "Built shared GitHub Actions workflows that every repo reuses",
+            "Set up the Claude Code tooling and conventions the team works with day to day",
+        ],
+        outcome="Deploys are boring in the best way, and a new repo is ready to ship on day one.",
+        technologies=["Terraform", "GitHub Actions", "AWS", "Kubernetes", "Serverless"],
+    ),
+    CaseStudy(
+        slug="gti-controls",
+        title="GTI Controls",
+        company="Grupo Tress",
+        role="Senior Developer",
+        kind="Frontend",
+        summary="The React component library behind Interis Works, Tress's cloud payroll product.",
+        challenge="Several teams building one payroll product were shipping screens that looked and behaved differently.",
+        approach=[
+            "Built a shared React component library for the whole product",
+            "Gave every team the same building blocks for forms, tables and layout",
+        ],
+        outcome="Every team shipped screens that looked and behaved the same.",
+        technologies=["React", "JavaScript", "Node.js"],
+    ),
+    CaseStudy(
+        slug="self-service",
+        title="Employee self service",
+        company="Grupo Tress",
+        role="Senior Developer",
+        kind="Product",
+        summary="The app where employees track their own attendance, led from the first screens to production.",
+        challenge="Employees needed to see and manage their own attendance without going through HR for every question.",
+        approach=[
+            "Owned the app end to end, from the first screens to production",
+            "Built on the C# and Node.js services and the PostgreSQL data behind Tress's payroll",
+        ],
+        outcome="Employees track their attendance themselves, in a product used by companies across Mexico, the U.S. and Canada.",
+        technologies=["React", "C#", "Node.js", "PostgreSQL"],
+    ),
+    CaseStudy(
+        slug="ticketing",
+        title="IT ticketing system",
+        company="Hisense México",
+        role="Developer",
+        kind="Product",
+        summary="An IT help desk built from scratch for Hisense's corporate office.",
+        challenge="The office had no single place to ask IT for help or follow up on a request.",
+        approach=[
+            "Built the ticketing system from scratch in C#, ASP.NET MVC and SQL",
+            "Kept it simple enough that nobody needed training to file a ticket",
+        ],
+        outcome="It became how the whole office asked for help.",
+        technologies=["C#", "MVC", "SQL"],
     ),
 ]
 
@@ -187,18 +318,30 @@ skills_data = [
 navbar_data = [
     NavBarItem(title="Home", url="/#home"),
     NavBarItem(title="About", url="/#about"),
-    NavBarItem(title="Work", url="/#work"),
-    NavBarItem(title="Education", url="/#education"),
-    NavBarItem(title="Side quests", url="/#github"),
+    NavBarItem(title="Experience", url="/#work"),
+    NavBarItem(title="Projects", url="/#projects"),
     NavBarItem(title="Skills", url="/#skills"),
+    NavBarItem(title="Side quests", url="/#github"),
+    NavBarItem(title="Education", url="/#education"),
     NavBarItem(title="Contact", url="/#contact"),
 ]
 
-# the frontend splits this on blank lines, renders the first paragraph as the lead,
-# and reads the "9+ years" phrase for the hero stats, so keep both shapes intact
+# the frontend splits the description on blank lines and renders the first paragraph as the lead
 about_me_data = AboutMe(
     title="About",
+    name="Cristopher Cervantes",
+    headline="Engineering Manager & Tech Lead. AI products, serverless AWS and the teams that ship them.",
+    summary=(
+        "Engineering Manager and Tech Lead with 9+ years shipping production software. At PSL Group I run "
+        "engineering for four products, and shipped Claude agents on AWS Bedrock, a React codebase serving three "
+        "brands and the pipelines every team deploys through. I lead through 1:1s and code reviews, and I still "
+        "write plenty of the code."
+    ),
     role="Tech Lead & Engineering Manager",
+    years_of_experience=9,
+    location="Rosarito, Mexico",
+    timezone="Pacific Time",
+    languages=[Language(name="Spanish"), Language(name="English")],
     main_stack=["TypeScript", "Next.js", "React", "Node.js", "AWS", "Serverless", "Bedrock", "LLMs"],
     editor="Neovim",
     expertise=[
@@ -210,33 +353,50 @@ about_me_data = AboutMe(
         "Infrastructure as code",
         "CI/CD and release pipelines",
     ],
-    # self rated out of 5, listed by relevance: main stack, then today's tooling, then earlier stacks
+    principles=[
+        Principle(
+            title="Unblock first",
+            body="A blocked engineer costs more than any clever code I could write myself, so their questions jump my queue.",
+        ),
+        Principle(
+            title="Push back with an alternative",
+            body="A review that only says no teaches nothing. I bring another way to do it, and we pick the better one together.",
+        ),
+        Principle(
+            title="Boring and correct",
+            body="Especially with AI. A plain answer that's right beats a brilliant one that's wrong, every time.",
+        ),
+        Principle(
+            title="Readable at 2 AM",
+            body="Whoever gets paged tonight should understand the code without me in the room.",
+        ),
+    ],
     # self rated out of 5: the main stack first, then the other tools named in the work history
     skill_levels=[
-        SkillLevel(name="TypeScript", level=5),
-        SkillLevel(name="Next.js", level=5),
-        SkillLevel(name="React", level=5),
-        SkillLevel(name="Node.js", level=5),
-        SkillLevel(name="AWS", level=5),
-        SkillLevel(name="Serverless", level=5),
-        SkillLevel(name="Bedrock", level=5),
-        SkillLevel(name="LLMs", level=5),
-        SkillLevel(name="C#", level=5),
-        SkillLevel(name="JavaScript", level=5),
-        SkillLevel(name="Lambda", level=5),
-        SkillLevel(name="DynamoDB", level=5),
-        SkillLevel(name="Aurora", level=4),
-        SkillLevel(name="OpenSearch", level=4),
-        SkillLevel(name="Terraform", level=4),
-        SkillLevel(name="Kubernetes", level=4),
-        SkillLevel(name="GitHub Actions", level=4),
-        SkillLevel(name="Docker", level=4),
-        SkillLevel(name="PostgreSQL", level=4),
-        SkillLevel(name="SQL", level=4),
-        SkillLevel(name="MVC", level=4),
-        SkillLevel(name="PHP", level=4),
-        SkillLevel(name="Python", level=4),
-        SkillLevel(name="Azure", level=3),
+        SkillLevel(name="TypeScript", level=5, category="Languages"),
+        SkillLevel(name="Next.js", level=5, category="Frontend"),
+        SkillLevel(name="React", level=5, category="Frontend"),
+        SkillLevel(name="Node.js", level=5, category="Backend"),
+        SkillLevel(name="AWS", level=5, category="Cloud & DevOps"),
+        SkillLevel(name="Serverless", level=5, category="Cloud & DevOps"),
+        SkillLevel(name="Bedrock", level=5, category="AI"),
+        SkillLevel(name="LLMs", level=5, category="AI"),
+        SkillLevel(name="C#", level=5, category="Languages"),
+        SkillLevel(name="JavaScript", level=5, category="Languages"),
+        SkillLevel(name="Lambda", level=5, category="Cloud & DevOps"),
+        SkillLevel(name="DynamoDB", level=5, category="Data"),
+        SkillLevel(name="Aurora", level=4, category="Data"),
+        SkillLevel(name="OpenSearch", level=4, category="Data"),
+        SkillLevel(name="Terraform", level=4, category="Cloud & DevOps"),
+        SkillLevel(name="Kubernetes", level=4, category="Cloud & DevOps"),
+        SkillLevel(name="GitHub Actions", level=4, category="Cloud & DevOps"),
+        SkillLevel(name="Docker", level=4, category="Cloud & DevOps"),
+        SkillLevel(name="PostgreSQL", level=4, category="Data"),
+        SkillLevel(name="SQL", level=4, category="Data"),
+        SkillLevel(name="MVC", level=4, category="Backend"),
+        SkillLevel(name="PHP", level=4, category="Languages"),
+        SkillLevel(name="Python", level=4, category="Languages"),
+        SkillLevel(name="Azure", level=3, category="Cloud & DevOps"),
     ],
     education=[
         Education(
@@ -266,7 +426,7 @@ about_me_data = AboutMe(
         "also suggest alternatives and solutions to the code my developers propose, and push them so that "
         "together we always land a better result.\n\n"
         "Off the clock I love working out, spending time with my family, and every now and then reading some "
-        "manga or playing video games. By the way, have you tried finding the easter eggs scattered around here?"
+        "manga or playing video games. Some of them left relics on this page, and every one of them wants to be touched."
     ),
 )
 

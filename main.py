@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from data import (
+    case_studies_data,
     projects_data,
     skills_data,
     navbar_data,
@@ -15,7 +16,7 @@ from data import (
 )
 
 import github
-from models import Project, Skill, NavBarItem, AboutMe, ContactInfo, RollResult, GitHubRepo
+from models import Project, CaseStudy, Skill, NavBarItem, AboutMe, ContactInfo, RollResult, GitHubRepo
 
 
 # Railway sets these on every deploy, so the interactive docs only show up locally
@@ -131,6 +132,14 @@ def get_projects():
     Retrieve the list of projects.
     """
     return projects_data
+
+
+@app.get("/case-studies", response_model=list[CaseStudy])
+def get_case_studies():
+    """
+    Retrieve the case studies, newest work first.
+    """
+    return case_studies_data
 
 
 @app.get("/skills", response_model=list[Skill])
