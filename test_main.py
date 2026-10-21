@@ -30,11 +30,8 @@ def all_copy():
     yield about_me_data.description
     yield about_me_data.summary
     yield about_me_data.headline
-    for principle in about_me_data.principles:
-        yield principle.body
     for project in projects_data:
         yield project.description
-        yield project.detailed_description
         yield from project.highlights
     for study in case_studies_data:
         yield study.summary
@@ -139,11 +136,19 @@ class CopyTests(unittest.TestCase):
 
     def test_dates_must_look_like_a_year_or_a_month(self):
         with self.assertRaises(ValueError):
-            Project(title="Umbrella", description="", detailed_description="", url="", technologies=[], start="March 2021")
+            Project(title="Umbrella", description="", url="", technologies=[], start="March 2021")
 
-    def test_every_role_has_resume_bullets(self):
+    def test_every_role_has_bullets_or_a_case_study(self):
+        # the resume lists a role's own bullets and its case studies, so every role needs at least one of them
+        studied = {study.company for study in case_studies_data}
         for project in projects_data:
-            self.assertTrue(project.highlights, project.title)
+            self.assertTrue(project.highlights or project.title in studied, project.title)
+
+    def test_no_bullet_repeats_a_case_study(self):
+        summaries = " ".join(f"{study.title} {study.summary} {study.outcome}" for study in case_studies_data).lower()
+        for project in projects_data:
+            for bullet in project.highlights:
+                self.assertNotIn(bullet.lower()[:40], summaries)
 
     def test_resume_bullets_stay_one_line_long(self):
         for project in projects_data:
@@ -180,11 +185,6 @@ class CopyTests(unittest.TestCase):
     def test_summary_fits_a_recruiter_skim(self):
         self.assertLessEqual(len(about_me_data.summary), 420)
 
-    def test_principles_are_named_and_short(self):
-        self.assertGreaterEqual(len(about_me_data.principles), 3)
-        for principle in about_me_data.principles:
-            self.assertLessEqual(len(principle.body), 140)
-
     def test_roles_are_named(self):
         for project in projects_data:
             for role in project.roles:
@@ -219,6 +219,10 @@ class CopyTests(unittest.TestCase):
         for area in about_me_data.expertise:
             self.assertNotIn(area, tools)
 
+    def test_every_certification_says_what_it_covers(self):
+        for cert in about_me_data.certifications:
+            self.assertTrue(cert.description, cert.name)
+
     def test_both_aws_certifications_are_listed(self):
         names = [cert.name for cert in about_me_data.certifications]
         self.assertEqual(len(names), 2)
@@ -237,19 +241,14 @@ class CopyTests(unittest.TestCase):
         self.assertEqual(self.skill_level_map()["C#"], 5)
         self.assertEqual(self.skill_level_map()["Node.js"], 5)
 
-    def test_psl_pitch_names_the_four_products_it_runs(self):
-        psl = projects_data[0]
-        for product in ["DGPL", "AMI", "IDH", "MEC"]:
-            self.assertIn(product, psl.description)
+    def test_psl_names_the_products_it_runs(self):
+        psl = " ".join(projects_data[0].highlights)
+        for product in ["FirstWord", "DGPL", "MEC", "AMI"]:
+            self.assertIn(product, psl)
 
-    def test_firstword_lives_in_the_psl_details_not_the_pitch(self):
-        psl = projects_data[0]
-        self.assertNotIn("FirstWord", psl.title + psl.description)
-        self.assertIn("FirstWord", psl.detailed_description)
-
-    def test_every_role_tells_a_longer_story_than_its_pitch(self):
-        for project in projects_data:
-            self.assertGreater(len(project.detailed_description), len(project.description))
+    def test_umbrella_keeps_its_thank_you(self):
+        umbrella = next(project for project in projects_data if project.title == "Umbrella Seguros")
+        self.assertIn("Erika Soto", umbrella.note)
 
     def test_about_invites_visitors_to_touch_the_relics(self):
         self.assertIn("relics", about_me_data.description)

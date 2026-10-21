@@ -5,36 +5,27 @@ from models import (
     ContactInfo,
     Education,
     Language,
+    Metric,
     NavBarItem,
-    Principle,
     Project,
     Skill,
     SkillLevel,
     SocialLink,
 )
 
-# Data for the portfolio projects and skills
+# every place I've worked, newest first. the description says what the company does, the highlights say what I
+# did there, and anything with a case study of its own is told once, over in case_studies_data
 projects_data = [
     Project(
         title="PSL Group",
-        roles=["Tech Lead", "Engineering Manager"],
+        roles=["Senior Application Developer", "Tech Lead", "Engineering Manager"],
         url="https://www.pslgroup.com/",
-        description=(
-            "I run engineering for four of PSL Group's products: DGPL, AMI, IDH and MEC. I set the priorities, lead "
-            "the team and still review and write plenty of the code."
-        ),
-        # the frontend splits this on blank lines, one paragraph per chapter of the role
-        detailed_description=(
-            "I joined as Tech Lead on FirstWord, PSL's pharma and healthcare intelligence platform, and grew into "
-            "managing engineering across the group's products.\n\n"
-            "On FirstWord I built one React codebase serving three brands, FirstWord Manager (the Next.js workspace "
-            "the team runs everything from) and FirstWord AI, versioned Claude agents on Bedrock with streaming and "
-            "guardrails.\n\n"
-            "Today I split my week between product and code: planning the roadmap for DGPL, AMI, IDH and MEC, running "
-            "1:1s, and pushing back on pull requests with alternatives until the team lands something better. I also "
-            "own the shared deploy pipelines and the infrastructure as code, and set up the Claude Code tooling the "
-            "whole team works with."
-        ),
+        description="Medical and pharma news, read by professionals all over the world.",
+        highlights=[
+            "Joined to keep FirstWord, PSL's medical news platform, fast and current for readers worldwide",
+            "Now run engineering for FirstWord, DGPL, MEC, AMI and the rest of PSL's product line",
+            "Plan the roadmap, run the 1:1s and still ship code most weeks",
+        ],
         technologies=[
             "TypeScript",
             "Next.js",
@@ -53,95 +44,56 @@ projects_data = [
             "GitHub Actions",
             "PHP",
         ],
-        highlights=[
-            "Grew from Tech Lead on FirstWord into Engineering Manager for DGPL, AMI, IDH and MEC",
-            "Shipped FirstWord AI: versioned Claude agents on AWS Bedrock with streaming answers and guardrails",
-            "Built a single React codebase that serves three FirstWord brands",
-            "Built FirstWord Manager, the Next.js workspace the team works from every day",
-            "Own the shared deploy pipelines and the infrastructure as code that every repo ships through",
-            "Set the roadmap, run 1:1s and code reviews, and rolled out Claude Code tooling for the whole team",
-        ],
     ),
     Project(
-        title="Grupo Tress",
+        title="Grupo Tress Internacional",
         roles=["Developer", "Senior Developer"],
         url="https://www.tress.com.mx/",
-        description=(
-            "Payroll and HR software used by companies across Mexico, the U.S. and Canada. I joined as a developer "
-            "and grew into a Senior Developer leading features end to end."
-        ),
-        detailed_description=(
-            "As Senior Developer I led the self service app where employees track their own attendance, owning it "
-            "from the first screens to production.\n\n"
-            "I also built GTI Controls, the React component library behind Interis Works, Tress's cloud payroll "
-            "product, so every team shipped screens that looked and behaved the same.\n\n"
-            "Along the way I worked across the C# and Node.js services, the PostgreSQL databases and the cloud "
-            "deployments on AWS and Azure."
-        ),
-        technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
+        description="Payroll and HR software that companies in Mexico, the U.S. and Canada run their people on.",
         highlights=[
-            "Promoted from Developer to Senior Developer",
-            "Led the employee self service attendance app from the first screens to production",
-            "Built GTI Controls, the React component library behind Interis Works, so every team shipped consistent screens",
-            "Worked across C# and Node.js services, PostgreSQL databases and deployments on AWS and Azure",
+            "Worked on the +orden console and Interis Works, the payroll products Tress customers use every pay period",
+            "Moved across C# and Node.js services, PostgreSQL and deployments on both AWS and Azure",
         ],
+        technologies=["React", "C#", "Node.js", "PostgreSQL", "SQL", "AWS", "Azure", "Docker"],
     ),
     Project(
-        title="Hisense México",
+        title="Hisense",
         url="https://www.hisense.com.mx/",
-        description="Internal tools for the corporate office and the factory floor, including the IT ticketing system.",
-        detailed_description=(
-            "I built the IT ticketing system from scratch in C#, ASP.NET MVC and SQL, and it became how the whole "
-            "office asked for help.\n\n"
-            "I also worked on the corporate website and wrote tools that connected to internal systems so managers "
-            "could follow manufacturing performance in real time."
-        ),
-        technologies=["C#", "MVC", "SQL"],
+        description="The TV and appliance maker. I worked where the software meets the factory floor.",
         highlights=[
-            "Built the IT ticketing system from scratch, which became how the whole office asked for help",
-            "Connected internal systems so managers could follow manufacturing performance in real time",
-            "Worked on the corporate website",
+            "Worked on the corporate website between plant projects",
         ],
+        technologies=["C#", "MVC", "SQL"],
         featured=False,
     ),
     Project(
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
-        description="Rebuilt the school insurance workflows on their management platform.",
-        detailed_description=(
-            "I worked on Umbrella's insurance platform with C#, MVC, SQL, Python and JavaScript. I rebuilt the "
-            "school insurance workflows from the ground up.\n\n"
-            "As more customers came on I kept extending the core features, fixing UX problems and tightening the "
-            "business logic so the platform could grow with them."
-        ),
-        technologies=["C#", "MVC", "SQL", "Python", "JavaScript"],
+        description="An insurance company, and the one admin app both its staff and its policyholders log into.",
         highlights=[
+            "One of the lead developers of Umbrella's admin app, an Azure client for the insurer and the insured alike",
             "Rebuilt the school insurance workflows from the ground up",
-            "Extended core features, fixed UX problems and tightened business rules as the customer base grew",
         ],
+        technologies=["C#", "MVC", "SQL", "Python", "JavaScript", "Azure"],
+        note="Erika Soto, gracias por todo. Tqm.",
         featured=False,
     ),
     Project(
         title="Systems Communications",
         roles=["Intern"],
         url="https://www.systemscomm.net/es/inicio/",
-        description="Internship. Built the truck log for the Tijuana customs office, my first code in daily use.",
-        detailed_description=(
-            "During my internship I built an inventory system for the Tijuana customs office that logged trucks "
-            "coming in and out, written in PHP, C# and SQL.\n\n"
-            "It was the first time something I wrote got used every day by real people, and the reason I never "
-            "looked back."
-        ),
-        technologies=["PHP", "C#", "SQL"],
+        description="Where I wrote my first line of production code, for the people who run the border.",
         highlights=[
-            "Built the inventory system that logged every truck in and out of the Tijuana customs office",
+            "Maintained the app CBP used to control customs access and inspect trailers and commercial trucks",
+            "Learned PHP and C# on a system the border couldn't afford to have down",
         ],
+        technologies=["PHP", "C#", "SQL"],
         featured=False,
     ),
 ]
 
-# the work I'd walk a hiring manager through, told as challenge, approach and outcome.
-# metrics stay empty until there's a real number to put there
+# the work I'd walk a hiring manager through, told as what was hard, what I did and what changed.
+# metrics only go in when someone actually measured them
 case_studies_data = [
     CaseStudy(
         slug="firstword-ai",
@@ -149,18 +101,17 @@ case_studies_data = [
         company="PSL Group",
         role="Tech Lead",
         kind="AI",
-        summary="Claude agents on AWS Bedrock that answer questions about pharma and healthcare intelligence.",
+        summary="Claude agents on AWS Bedrock that answer questions about the medical news FirstWord publishes.",
         challenge=(
-            "FirstWord readers make decisions on what they read, so an AI feature there has to be right before it "
-            "can be impressive. A confident wrong answer costs more than no answer at all."
+            "FirstWord's readers make real decisions on what they read. An assistant that sounds sure and gets it "
+            "wrong would cost more trust than it could ever earn."
         ),
         approach=[
             "Versioned every agent, so a prompt or model change ships and rolls back like any other release",
-            "Streamed answers to the reader while the model is still writing",
-            "Put guardrails in front of every response",
-            "Treated the model like any other dependency: tested, monitored and with a fallback",
+            "Streamed answers to the reader while the model is still writing, nobody stares at a spinner",
+            "Put guardrails in front of every response, and kept the model honest with tests",
         ],
-        outcome="AI answers that live inside the product people already use, held to the same bar as the rest of it.",
+        outcome="An assistant that lives inside the product readers already open every day, not off to the side of it.",
         technologies=["TypeScript", "Bedrock", "LLMs", "Lambda", "Serverless", "React"],
     ),
     CaseStudy(
@@ -169,14 +120,14 @@ case_studies_data = [
         company="PSL Group",
         role="Tech Lead",
         kind="Frontend",
-        summary="A single React codebase that serves every FirstWord brand.",
-        challenge="Three brands that each need their own look would normally mean three apps drifting apart.",
+        summary="Every FirstWord brand running on the same React app, each one still looking like itself.",
+        challenge="Three brands meant three apps quietly drifting apart, and every fix landing three times, or worse, twice.",
         approach=[
-            "Built one React codebase with the brand as configuration, not as a fork",
-            "Shared components, data fetching and tests across every brand",
-            "Built FirstWord Manager in Next.js as the workspace the team runs everything from",
+            "Made the brand a setting instead of a fork, colors, copy and all",
+            "Shared the components, the data layer and the tests across every brand",
+            "Built FirstWord Manager in Next.js, the workspace the team runs everything from",
         ],
-        outcome="A fix or a feature lands once and every brand gets it.",
+        outcome="A fix lands once and every brand gets it the same morning.",
         technologies=["React", "Next.js", "TypeScript", "Node.js"],
     ),
     CaseStudy(
@@ -185,60 +136,61 @@ case_studies_data = [
         company="PSL Group",
         role="Engineering Manager",
         kind="Platform",
-        summary="Shared deploy pipelines, infrastructure as code and Claude Code tooling for the whole team.",
-        challenge="Every repo deploying its own way makes releases slow to review and scary to run.",
+        summary="One road to production for every repo, plus the Claude Code setup the whole team works with.",
+        challenge="Every repo deployed its own way, which made releases slow to review and nerve wracking to press.",
         approach=[
-            "Moved environments into infrastructure as code",
-            "Built shared GitHub Actions workflows that every repo reuses",
-            "Set up the Claude Code tooling and conventions the team works with day to day",
+            "Moved the environments into infrastructure as code",
+            "Wrote shared GitHub Actions workflows that every repo reuses instead of copying",
+            "Set up Claude Code and the conventions around it, so the team gets help without losing its own style",
         ],
-        outcome="Deploys are boring in the best way, and a new repo is ready to ship on day one.",
+        outcome="A new repo is ready to ship on day one, through the same reviewed path as every other.",
         technologies=["Terraform", "GitHub Actions", "AWS", "Kubernetes", "Serverless"],
+    ),
+    CaseStudy(
+        slug="gti-terminals",
+        title="GTI B2 and facial terminals",
+        company="Grupo Tress Internacional",
+        role="Senior Developer",
+        kind="Product",
+        summary="Attendance terminals, including facial ones, that Tress customers leaned on to keep track of their people through the pandemic.",
+        challenge="Companies still needed to know who was at work, in the middle of a pandemic.",
+        approach=[
+            "Built the GTI B2 terminals, and then the facial terminals that followed them",
+        ],
+        outcome="Some of the first tools Tress customers had for personnel control during the pandemic.",
+        technologies=[],
     ),
     CaseStudy(
         slug="gti-controls",
         title="GTI Controls",
-        company="Grupo Tress",
+        company="Grupo Tress Internacional",
         role="Senior Developer",
         kind="Frontend",
-        summary="The React component library behind Interis Works, Tress's cloud payroll product.",
-        challenge="Several teams building one payroll product were shipping screens that looked and behaved differently.",
+        summary="The React component library under Interis Works, Tress's cloud payroll product.",
+        challenge="Several teams were building one product, and you could tell which team built which screen.",
         approach=[
-            "Built a shared React component library for the whole product",
-            "Gave every team the same building blocks for forms, tables and layout",
+            "Built one shared library of React components for the whole product",
+            "Gave every team the same building blocks for forms, tables and layouts",
         ],
-        outcome="Every team shipped screens that looked and behaved the same.",
+        outcome="You can no longer tell which team built which screen, which was the whole point.",
         technologies=["React", "JavaScript", "Node.js"],
     ),
     CaseStudy(
-        slug="self-service",
-        title="Employee self service",
-        company="Grupo Tress",
-        role="Senior Developer",
-        kind="Product",
-        summary="The app where employees track their own attendance, led from the first screens to production.",
-        challenge="Employees needed to see and manage their own attendance without going through HR for every question.",
-        approach=[
-            "Owned the app end to end, from the first screens to production",
-            "Built on the C# and Node.js services and the PostgreSQL data behind Tress's payroll",
-        ],
-        outcome="Employees track their attendance themselves, in a product used by companies across Mexico, the U.S. and Canada.",
-        technologies=["React", "C#", "Node.js", "PostgreSQL"],
-    ),
-    CaseStudy(
-        slug="ticketing",
-        title="IT ticketing system",
-        company="Hisense México",
+        slug="hisense-plant",
+        title="A plant that doubled its output",
+        company="Hisense",
         role="Developer",
         kind="Product",
-        summary="An IT help desk built from scratch for Hisense's corporate office.",
-        challenge="The office had no single place to ask IT for help or follow up on a request.",
+        summary="Software that talked straight to the factory robots, and took a whole plant's productivity up 100%.",
+        challenge="Material, people and machines on the plant floor were coordinated by hand, and it showed in the numbers.",
         approach=[
-            "Built the ticketing system from scratch in C#, ASP.NET MVC and SQL",
-            "Kept it simple enough that nobody needed training to file a ticket",
+            "Designed automated processes that talk directly to the plant's robotics",
+            "Added material access and personnel control to the same system",
+            "Built a Jira style ticketing app so the IT team could stop living in email",
         ],
-        outcome="It became how the whole office asked for help.",
+        outcome="Plant productivity went up 100%.",
         technologies=["C#", "MVC", "SQL"],
+        metrics=[Metric(value="2×", label="plant productivity")],
     ),
 ]
 
@@ -248,8 +200,8 @@ skills_data = [
         title="Leading Teams",
         icon="TbUserCode",
         description=(
-            "I mentor engineers, run 1:1s and code reviews, set priorities and keep releases on a steady schedule. "
-            "I'd rather unblock five people than write the clever thing myself."
+            "My calendar is mostly 1:1s, and I like it that way. I'd rather unblock five engineers before lunch "
+            "than write the clever thing myself."
         ),
         attack=2500,
         defense=2100,
@@ -259,9 +211,8 @@ skills_data = [
         title="AI & LLMs",
         icon="TbSparkles",
         description=(
-            "LLM features are still features: they need guardrails, tests and a fallback for when the model gets it "
-            "wrong. I've shipped AI that people use every day, and I'd take a boring correct answer over a flashy "
-            "wrong one."
+            "Models get things wrong, so I treat them like any other dependency: guardrails, tests and a "
+            "fallback. A boring right answer beats a brilliant wrong one."
         ),
         attack=2800,
         defense=1700,
@@ -271,8 +222,8 @@ skills_data = [
         title="Cloud & Infra",
         icon="FaAws",
         description=(
-            "Functions when traffic is spiky, containers when it isn't. Every environment lives in code and every "
-            "repo ships through the same pipeline, so deploys are boring in the best way."
+            "Functions when traffic spikes, containers when it doesn't, and nothing clicked together by hand in a "
+            "console. If it isn't in code, it doesn't exist."
         ),
         attack=2300,
         defense=2800,
@@ -282,8 +233,8 @@ skills_data = [
         title="Frontend & UX",
         icon="TbLayoutDashboard",
         description=(
-            "Design systems and component libraries a whole product, or several brands, can share. I sweat the small "
-            "stuff too: loading states, dark mode, i18n and copy that sounds like a person wrote it."
+            "Component libraries a whole product can share, and the small stuff people only notice when it's "
+            "missing: loading states, dark mode, copy that sounds like a person."
         ),
         attack=2400,
         defense=2000,
@@ -293,9 +244,8 @@ skills_data = [
         title="Data & Search",
         icon="TbDatabase",
         description=(
-            "I model data around how it gets read, then make sure the indexes agree. NoSQL when the access patterns "
-            "are known, SQL when the data has real relationships, and a search engine when people need to find "
-            "things fast."
+            "I start from how the data will be read and work backwards. Documents when the access patterns are "
+            "known, tables when the relationships matter, an index when people need answers fast."
         ),
         attack=2200,
         defense=2500,
@@ -305,9 +255,8 @@ skills_data = [
         title="Quality & Security",
         icon="TbTestPipe",
         description=(
-            "Unit tests for the logic, end to end tests for the flows people actually click, and CI that blocks the "
-            "merge when they fail. Logging, alerts and locked down secrets go in before launch, not after the first "
-            "incident."
+            "Unit tests for the logic, end to end tests for the paths people actually click, and a CI that's "
+            "allowed to say no. Secrets and alerts go in before launch, not after the first 3 a.m. page."
         ),
         attack=1900,
         defense=3000,
@@ -330,12 +279,11 @@ navbar_data = [
 about_me_data = AboutMe(
     title="About",
     name="Cristopher Cervantes",
-    headline="Engineering Manager & Tech Lead. AI products, serverless AWS and the teams that ship them.",
+    headline="Engineering Manager & Tech Lead. Nine years of shipping software from a beach town in Baja to people all over the world.",
     summary=(
-        "Engineering Manager and Tech Lead with 9+ years shipping production software. At PSL Group I run "
-        "engineering for four products, and shipped Claude agents on AWS Bedrock, a React codebase serving three "
-        "brands and the pipelines every team deploys through. I lead through 1:1s and code reviews, and I still "
-        "write plenty of the code."
+        "Engineering Manager and Tech Lead with 9+ years building production software. At PSL Group I grew from "
+        "Senior Application Developer to running engineering for FirstWord, DGPL, MEC and AMI. Before that: "
+        "payroll and attendance software for three countries, and factory software that doubled a plant's output."
     ),
     role="Tech Lead & Engineering Manager",
     years_of_experience=9,
@@ -352,24 +300,6 @@ about_me_data = AboutMe(
         "Design systems",
         "Infrastructure as code",
         "CI/CD and release pipelines",
-    ],
-    principles=[
-        Principle(
-            title="Unblock first",
-            body="A blocked engineer costs more than any clever code I could write myself, so their questions jump my queue.",
-        ),
-        Principle(
-            title="Push back with an alternative",
-            body="A review that only says no teaches nothing. I bring another way to do it, and we pick the better one together.",
-        ),
-        Principle(
-            title="Boring and correct",
-            body="Especially with AI. A plain answer that's right beats a brilliant one that's wrong, every time.",
-        ),
-        Principle(
-            title="Readable at 2 AM",
-            body="Whoever gets paged tonight should understand the code without me in the room.",
-        ),
     ],
     # self rated out of 5: the main stack first, then the other tools named in the work history
     skill_levels=[
@@ -406,27 +336,41 @@ about_me_data = AboutMe(
             degree="B.S. in Computer Systems Engineering",
             original_name="Ingeniería en Sistemas Computacionales",
             highlights=[
-                "Where I learned the fundamentals I still lean on: algorithms, data structures, databases, networks "
-                "and software engineering.",
+                "Algorithms, databases, networks and more late nights than I'd like to count. Most of what I still "
+                "lean on started here.",
                 "Part of TecNM, Mexico's national network of public engineering schools.",
             ],
         ),
     ],
     certifications=[
-        Certification(name="AWS Certified Developer \u2013 Associate", issuer="Amazon Web Services", level="Associate"),
-        Certification(name="AWS Certified Cloud Practitioner", issuer="Amazon Web Services", level="Foundational"),
+        Certification(
+            name="AWS Certified Developer \u2013 Associate",
+            issuer="Amazon Web Services",
+            level="Associate",
+            description=(
+                "Building, deploying, securing and debugging applications on AWS services like Lambda, DynamoDB, "
+                "API Gateway and IAM."
+            ),
+        ),
+        Certification(
+            name="AWS Certified Cloud Practitioner",
+            issuer="Amazon Web Services",
+            level="Foundational",
+            description="The AWS Cloud from the ground up: core services, security, pricing and the shared responsibility model.",
+        ),
     ],
     description=(
-        "I started like everyone else, as an intern who could barely scratch out a few lines of code. Over 9+ "
-        "years I climbed one step at a time, until I became one of the key developers at every company I've "
-        "worked for.\n\n"
-        "I challenge myself every day and I'm always after continuous improvement, both in myself and in the "
-        "products I help build.\n\n"
-        "Today I'm a mix of Engineering Manager and Tech Lead. I don't just set the priorities for my products, I "
-        "also suggest alternatives and solutions to the code my developers propose, and push them so that "
-        "together we always land a better result.\n\n"
-        "Off the clock I love working out, spending time with my family, and every now and then reading some "
-        "manga or playing video games. Some of them left relics on this page, and every one of them wants to be touched."
+        "I'm 32 and I'm from Rosarito, Baja California, a beach town just south of Tijuana. My first production "
+        "code ran at the border, and 9+ years later the things I build are used by people I'll never meet, in "
+        "countries I've never been to.\n\n"
+        "I didn't show up knowing much. I was an intern who could barely scratch out a few lines of code, and I "
+        "got better one job at a time, until I was one of the people the team leaned on at every company I "
+        "joined.\n\n"
+        "These days I'm half Engineering Manager, half Tech Lead. I set the priorities, run the 1:1s and plan "
+        "the roadmap, and I still open pull requests and leave long comments on other people's. When I push back "
+        "on a design I bring another way to do it, because a no on its own doesn't teach anybody anything.\n\n"
+        "Off the clock I'm working out, with my family, or every now and then a few volumes deep into a manga "
+        "or a video game. A few of those games left relics hidden around this page. Good luck."
     ),
 )
 
