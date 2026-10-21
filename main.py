@@ -23,8 +23,8 @@ from models import Project, CaseStudy, Skill, NavBarItem, AboutMe, ContactInfo, 
 IS_PRODUCTION = any(name in os.environ for name in ("RAILWAY_ENVIRONMENT_ID", "RAILWAY_ENVIRONMENT"))
 
 app = FastAPI(
-    title="My Portfolio API",
-    description="API that feeds data to cristophercervantes.com",
+    title="Cristopher's portfolio API",
+    description="Everything cristophercervantes.com says about me, served as JSON.",
     version="1.0.0",
     docs_url=None if IS_PRODUCTION else "/docs",
     redoc_url=None if IS_PRODUCTION else "/redoc",
@@ -99,13 +99,13 @@ async def harden_responses(request: Request, call_next):
 
 @app.get("/")
 def read_root():
-    return {"message": "Portfolio API is alive!"}
+    return {"message": "It's alive. The good stuff starts at /about."}
 
 
 @app.get("/navbar", response_model=list[NavBarItem])
 def get_navbar():
     """
-    Retrieve the navigation bar items.
+    The sections, in the order the page shows them.
     """
     return navbar_data
 
@@ -113,7 +113,7 @@ def get_navbar():
 @app.get("/about", response_model=AboutMe)
 def get_about():
     """
-    Retrieve the about me section.
+    Who I am, where I am and what I'm good at.
     """
     return about_me_data
 
@@ -121,7 +121,7 @@ def get_about():
 @app.get("/contact", response_model=ContactInfo)
 def get_contact():
     """
-    Retrieve the contact information.
+    Where to reach me.
     """
     return contact_info_data
 
@@ -129,7 +129,7 @@ def get_contact():
 @app.get("/projects", response_model=list[Project])
 def get_projects():
     """
-    Retrieve the list of projects.
+    Every place I've worked, newest first.
     """
     return projects_data
 
@@ -137,7 +137,7 @@ def get_projects():
 @app.get("/case-studies", response_model=list[CaseStudy])
 def get_case_studies():
     """
-    Retrieve the case studies, newest work first.
+    The work I'd walk you through, newest first.
     """
     return case_studies_data
 
@@ -145,7 +145,7 @@ def get_case_studies():
 @app.get("/skills", response_model=list[Skill])
 def get_skills():
     """
-    Retrieve the list of skills.
+    The skill cards, duel stats included.
     """
     return skills_data
 
@@ -153,7 +153,7 @@ def get_skills():
 @app.get("/github/repos", response_model=list[GitHubRepo])
 def get_github_repos():
     """
-    Retrieve my personal GitHub repos, each pitched by its README.
+    My public repos, each one pitched by its own README.
     """
     try:
         return github.get_repos()

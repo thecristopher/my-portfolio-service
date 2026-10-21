@@ -16,13 +16,11 @@ class Project(BaseModel):
     title: str
     # one line pitch, the card and the resume lead with it
     description: str
-    # the longer story, split on blank lines into one paragraph per chapter of the role
-    detailed_description: str
     url: str
     technologies: list[str]
     # every title held there, oldest first. the frontend draws each one as a commit in the career log
     roles: list[str] = []
-    # resume bullets: what I shipped and what changed because of it
+    # resume bullets for the wins that don't have a case study of their own, so nothing is said twice
     highlights: list[str] = []
     location: str | None = None
     # "Remote", "Hybrid" or "On site"
@@ -30,6 +28,8 @@ class Project(BaseModel):
     start: str | None = Field(default=None, pattern=MONTH_PATTERN)
     # None while I still work there
     end: str | None = Field(default=None, pattern=MONTH_PATTERN)
+    # a personal line for the site only, the resume leaves it out
+    note: str | None = None
     # how many engineers I led there, only for roles where I led people
     team_size: int | None = None
     # older roles render as a compact list instead of a full card
@@ -95,6 +95,8 @@ class Certification(BaseModel):
     name: str
     issuer: str
     level: str
+    # what the exam actually checks, in a sentence, so the badge says more than its name
+    description: str = ""
     year: int | None = None
     # a public verification link, like a Credly badge, once there is one
     verify_url: str | None = None
@@ -104,11 +106,6 @@ class Language(BaseModel):
     name: str
     # Native, Fluent, Professional or Conversational, None until stated
     level: str | None = None
-
-
-class Principle(BaseModel):
-    title: str
-    body: str
 
 
 class AboutMe(BaseModel):
@@ -129,9 +126,8 @@ class AboutMe(BaseModel):
     languages: list[Language] = []
     main_stack: list[str]
     editor: str
-    # what I'm good at, not which tools: profile.ts prints it and leaves the tools to the skill bars
+    # what I'm good at, not which tools: the resume lists it beside the tools as leadership
     expertise: list[str] = []
-    principles: list[Principle] = []
     skill_levels: list[SkillLevel]
     education: list[Education] = []
     certifications: list[Certification] = []

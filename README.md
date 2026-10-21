@@ -10,8 +10,8 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | ------ | --------------- | ------------------------------------------------------------------------------------------------------------- |
 | `GET`  | `/`             | A health check                                                                                                |
 | `GET`  | `/navbar`       | The navigation links, in order                                                                                |
-| `GET`  | `/about`        | Name, headline, recruiter summary, bio, location, languages, principles, expertise and skill levels by category |
-| `GET`  | `/projects`     | Every place I've worked: stack, story, resume bullets, the titles I held and the dates                         |
+| `GET`  | `/about`        | Name, headline, recruiter summary, bio, location, languages, expertise and skill levels by category              |
+| `GET`  | `/projects`     | Every place I've worked: stack, pitch, the bullets no case study covers, the titles I held and the dates      |
 | `GET`  | `/case-studies` | The work I'd walk a hiring manager through: challenge, approach, outcome and stack                            |
 | `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
