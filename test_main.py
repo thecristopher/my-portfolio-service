@@ -4,9 +4,10 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from data import about_me_data, contact_info_data, navbar_data, projects_data, skills_data
+from data import about_me_data, case_studies_data, contact_info_data, navbar_data, projects_data, skills_data
 import main
 from main import app
+from models import Project
 
 # the roll cookie is Secure, so the test client has to talk https to get it back
 client = TestClient(app, base_url="https://testserver")
@@ -27,9 +28,19 @@ KNOWN_SKILL_ICONS = {
 
 def all_copy():
     yield about_me_data.description
+    yield about_me_data.summary
+    yield about_me_data.headline
+    for principle in about_me_data.principles:
+        yield principle.body
     for project in projects_data:
         yield project.description
         yield project.detailed_description
+        yield from project.highlights
+    for study in case_studies_data:
+        yield study.summary
+        yield study.challenge
+        yield study.outcome
+        yield from study.approach
     for skill in skills_data:
         yield skill.title
         yield skill.description
@@ -41,8 +52,9 @@ class CopyTests(unittest.TestCase):
         for text in all_copy():
             self.assertNotIn("\u2014", text)
 
-    def test_about_mentions_years_for_the_hero_stat(self):
-        self.assertRegex(about_me_data.description, r"\d+\+? years")
+    def test_years_of_experience_match_the_bio(self):
+        self.assertIn(f"{about_me_data.years_of_experience}+ years", about_me_data.description)
+        self.assertIn(f"{about_me_data.years_of_experience}+ years", about_me_data.summary)
 
     def test_about_has_a_lead_paragraph_and_more(self):
         paragraphs = re.split(r"\n\s*\n", about_me_data.description)
@@ -114,16 +126,64 @@ class CopyTests(unittest.TestCase):
     def test_skill_levels_split_evenly_into_two_columns(self):
         self.assertEqual(len(about_me_data.skill_levels) % 2, 0)
 
-    def test_career_years_run_forward(self):
+    def test_career_dates_run_forward(self):
         for project in projects_data:
-            if project.start_year and project.end_year:
-                self.assertLessEqual(project.start_year, project.end_year)
+            if project.start and project.end:
+                self.assertLessEqual(project.start, project.end)
 
     def test_only_the_current_job_is_still_open(self):
         # the career log tags the newest commit as HEAD, so no older job may claim "present"
         for project in projects_data[1:]:
-            if project.start_year:
-                self.assertIsNotNone(project.end_year)
+            if project.start:
+                self.assertIsNotNone(project.end)
+
+    def test_dates_must_look_like_a_year_or_a_month(self):
+        with self.assertRaises(ValueError):
+            Project(title="Umbrella", description="", detailed_description="", url="", technologies=[], start="March 2021")
+
+    def test_every_role_has_resume_bullets(self):
+        for project in projects_data:
+            self.assertTrue(project.highlights, project.title)
+
+    def test_resume_bullets_stay_one_line_long(self):
+        for project in projects_data:
+            for bullet in project.highlights:
+                self.assertLessEqual(len(bullet), 120, bullet)
+                self.assertFalse(bullet.endswith("."), bullet)
+
+    def test_every_case_study_names_a_company_from_the_work_history(self):
+        companies = {project.title for project in projects_data}
+        for study in case_studies_data:
+            self.assertIn(study.company, companies)
+
+    def test_case_study_slugs_are_unique_and_url_safe(self):
+        slugs = [study.slug for study in case_studies_data]
+        self.assertEqual(len(slugs), len(set(slugs)))
+        for slug in slugs:
+            self.assertRegex(slug, r"^[a-z0-9-]+$")
+
+    def test_case_studies_only_use_tools_with_a_skill_level(self):
+        tools = {skill.name for skill in about_me_data.skill_levels}
+        for study in case_studies_data:
+            for tech in study.technologies:
+                self.assertIn(tech, tools)
+
+    def test_every_case_study_tells_challenge_approach_and_outcome(self):
+        for study in case_studies_data:
+            self.assertTrue(study.challenge and study.approach and study.outcome, study.slug)
+
+    def test_every_skill_level_belongs_to_a_known_category(self):
+        known = {"Languages", "Frontend", "Backend", "Cloud & DevOps", "Data", "AI"}
+        for skill in about_me_data.skill_levels:
+            self.assertIn(skill.category, known, skill.name)
+
+    def test_summary_fits_a_recruiter_skim(self):
+        self.assertLessEqual(len(about_me_data.summary), 420)
+
+    def test_principles_are_named_and_short(self):
+        self.assertGreaterEqual(len(about_me_data.principles), 3)
+        for principle in about_me_data.principles:
+            self.assertLessEqual(len(principle.body), 140)
 
     def test_roles_are_named(self):
         for project in projects_data:
@@ -191,8 +251,8 @@ class CopyTests(unittest.TestCase):
         for project in projects_data:
             self.assertGreater(len(project.detailed_description), len(project.description))
 
-    def test_about_invites_visitors_to_hunt_the_easter_eggs(self):
-        self.assertIn("easter eggs", about_me_data.description)
+    def test_about_invites_visitors_to_touch_the_relics(self):
+        self.assertIn("relics", about_me_data.description)
 
     def test_contact_uses_the_personal_domain_email(self):
         self.assertEqual(contact_info_data.email, "contact@cristophercervantes.com")
@@ -207,6 +267,19 @@ class CopyTests(unittest.TestCase):
     def test_github_points_at_the_personal_profile(self):
         github = next(social for social in contact_info_data.socials if social.name == "GitHub")
         self.assertEqual(github.url, "https://github.com/thecristopher")
+
+
+class CaseStudyEndpointTests(unittest.TestCase):
+    def setUp(self):
+        main._hits.clear()
+
+    def test_case_studies_are_served_in_order(self):
+        body = client.get("/case-studies").json()
+        self.assertEqual([study["slug"] for study in body], [study.slug for study in case_studies_data])
+
+    def test_projects_carry_their_resume_bullets(self):
+        body = client.get("/projects").json()
+        self.assertEqual(body[0]["highlights"], projects_data[0].highlights)
 
 
 class RollTests(unittest.TestCase):

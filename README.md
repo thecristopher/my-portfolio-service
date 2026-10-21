@@ -10,8 +10,9 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | ------ | --------------- | ------------------------------------------------------------------------------------------------------------- |
 | `GET`  | `/`             | A health check                                                                                                |
 | `GET`  | `/navbar`       | The navigation links, in order                                                                                |
-| `GET`  | `/about`        | Bio, role, main stack, editor, expertise and skill levels                                                     |
-| `GET`  | `/projects`     | Every place I've worked: stack, description, the titles I held and the years                                   |
+| `GET`  | `/about`        | Name, headline, recruiter summary, bio, location, languages, principles, expertise and skill levels by category |
+| `GET`  | `/projects`     | Every place I've worked: stack, story, resume bullets, the titles I held and the dates                         |
+| `GET`  | `/case-studies` | The work I'd walk a hiring manager through: challenge, approach, outcome and stack                            |
 | `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
 | `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |
@@ -54,7 +55,9 @@ Besides the endpoints, the tests keep the content honest: no em dashes in the co
 
 ## Changing the content
 
-All of the copy lives in `data.py`, and the response shapes are the Pydantic models in `models.py`. Edit the data, run the tests, and the site picks it up on the next request.
+All of the copy lives in `data.py`, and the response shapes are the Pydantic models in `models.py`. Edit the data, run the tests, and the site picks it up on the next request. The site also builds the downloadable resume PDF from these same endpoints, so it never drifts from the page.
+
+Some fields are optional and stay hidden on the site and the resume until they're filled in: each role's `start`, `end` (`"2021"` or `"2021-03"`), `location`, `work_mode` and `team_size`, each case study's `metrics`, each certification's `year` and `verify_url`, each language's `level`, and `open_to` and `work_modes` in the about.
 
 ## Deploying
 
