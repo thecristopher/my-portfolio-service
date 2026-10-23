@@ -66,3 +66,5 @@ The `Procfile` starts uvicorn on whatever `$PORT` the host provides:
 ```
 web: uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
+
+On Railway, Redeploy rebuilds the commit that is already live, so it never picks up new work on `main`. To ship what is new, use Deploy Latest Commit from the command palette or push to `main`, then check that the new deployment shows the latest commit.
