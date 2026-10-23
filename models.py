@@ -152,6 +152,8 @@ class GitHubRepo(BaseModel):
     url: str
     pitch: str
     language: str | None
+    # every language with a real share of the code, biggest first
+    languages: list[str] = []
     stars: int
     forks: int
     pushed_at: str

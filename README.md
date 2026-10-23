@@ -15,7 +15,7 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | `GET`  | `/case-studies` | The work I'd walk a hiring manager through: challenge, approach, outcome and stack                            |
 | `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
-| `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph. Cached for 10 minutes |
+| `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph and listing every language with at least a tenth of its code. Cached for 10 minutes |
 | `GET`  | `/roll`         | A d20 perception check against DC 8, with its own lines for a natural 20 and a natural 1. Fail once and it remembers with a cookie, so a second miss gets a different line |
 
 FastAPI also serves interactive docs at `/docs` and `/redoc` when it runs locally. They're switched off on Railway (detected through the `RAILWAY_ENVIRONMENT_ID` variable Railway sets), so production doesn't hand out a map of the API.
@@ -40,7 +40,7 @@ uvicorn main:app --reload
 
 The API runs at `http://localhost:8000`. CORS allows `http://localhost:5173` (the Vite dev server) and the production domain. Add any other origin to `origins` in `main.py`.
 
-`/github/repos` works without credentials, but GitHub only allows 60 anonymous requests an hour. Set `GITHUB_TOKEN` to any personal access token (no scopes needed for public repos) to raise that to 5000.
+`/github/repos` works without credentials, but GitHub only allows 60 anonymous requests an hour, and each refresh spends one on the repo list plus two per repo, its README and its languages. Set `GITHUB_TOKEN` to any personal access token (no scopes needed for public repos) to raise that to 5000.
 
 ## Tests
 

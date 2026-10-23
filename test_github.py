@@ -99,6 +99,23 @@ class PickPersonalReposTests(unittest.TestCase):
         self.assertEqual(self.names(repos), ["malenia", "radahn"])
 
 
+class MainLanguagesTests(unittest.TestCase):
+    """A repo shows every language that carries real weight, like the songs that made the anniversary playlist."""
+
+    def test_keeps_both_languages_of_claires_webcam_app_biggest_first(self):
+        self.assertEqual(github.main_languages({"Rust": 4000, "Swift": 6000}), ["Swift", "Rust"])
+
+    def test_leaves_out_a_language_under_a_tenth_of_the_code(self):
+        self.assertEqual(github.main_languages({"Lua": 9500, "Shell": 500}), ["Lua"])
+
+    def test_caps_malenias_polyglot_repo_at_three_languages(self):
+        counts = {"Python": 400, "Rust": 300, "Go": 200, "Lua": 100}
+        self.assertEqual(github.main_languages(counts), ["Python", "Rust", "Go"])
+
+    def test_returns_no_languages_for_inde_readme_only_repo(self):
+        self.assertEqual(github.main_languages({}), [])
+
+
 class GetReposCacheTests(unittest.TestCase):
     """The repo list is kept close at hand, like a playlist saved for the drive home."""
 
@@ -133,9 +150,18 @@ class GitHubReposEndpointTests(unittest.TestCase):
         repo = raw_repo("anniversary-album", description="Old blurb")
         readme = "# anniversary-album\n\nEvery photo from Claire and Inde's anniversary trip."
         with patch("github.github_get", return_value=f"[{github.json.dumps(repo)}]"), \
-             patch("github.fetch_readme", return_value=readme):
+             patch("github.fetch_readme", return_value=readme), \
+             patch("github.fetch_languages", return_value={}):
             body = client.get("/github/repos").json()
         self.assertEqual(body[0]["pitch"], "Every photo from Claire and Inde's anniversary trip.")
+
+    def test_lists_every_main_language_of_the_repo(self):
+        repo = raw_repo("canon-webcam", language="Swift")
+        with patch("github.github_get", return_value=f"[{github.json.dumps(repo)}]"), \
+             patch("github.fetch_readme", return_value=""), \
+             patch("github.fetch_languages", return_value={"Swift": 6000, "Rust": 4000}):
+            body = client.get("/github/repos").json()
+        self.assertEqual(body[0]["languages"], ["Swift", "Rust"])
 
     def test_answers_502_while_github_rests_and_nothing_is_cached_yet(self):
         with patch("github.github_get", side_effect=OSError):
