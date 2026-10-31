@@ -281,6 +281,9 @@ class TheWayInAndTheWayToReachOut(unittest.TestCase):
         for item in navbar_data:
             self.assertRegex(item.url, r"^/#[a-z]+$")
 
+    def test_navbar_lists_only_the_sections_the_page_renders(self):
+        self.assertEqual([item.url for item in navbar_data], ["/#home", "/#about", "/#work", "/#skills", "/#github", "/#contact"])
+
     def test_contact_uses_the_personal_domain_email(self):
         self.assertEqual(contact_info_data.email, "contact@cristophercervantes.com")
 

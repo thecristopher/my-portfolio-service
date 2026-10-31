@@ -268,10 +268,8 @@ navbar_data = [
     NavBarItem(title="Home", url="/#home"),
     NavBarItem(title="About", url="/#about"),
     NavBarItem(title="Experience", url="/#work"),
-    NavBarItem(title="Projects", url="/#projects"),
     NavBarItem(title="Skills", url="/#skills"),
     NavBarItem(title="Side quests", url="/#github"),
-    NavBarItem(title="Education", url="/#education"),
     NavBarItem(title="Contact", url="/#contact"),
 ]
 
