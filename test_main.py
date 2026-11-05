@@ -4,26 +4,13 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from data import about_me_data, case_studies_data, contact_info_data, navbar_data, projects_data, skills_data
+from data import about_me_data, case_studies_data, contact_info_data, navbar_data, projects_data
 import main
 from main import app
 from models import Project
 
-# the roll cookie is Secure, so the test client has to talk https to get it back
+# the site is served over https, so the tests talk to it the same way
 client = TestClient(app, base_url="https://testserver")
-
-# icon names the frontend knows how to render
-KNOWN_SKILL_ICONS = {
-    "TbUserCode",
-    "TbSparkles",
-    "TbLayoutDashboard",
-    "TbDatabase",
-    "TbTestPipe",
-    "FaAws",
-    "SiNextdotjs",
-    "SiNeovim",
-    "GrShieldSecurity",
-}
 
 # the visitors who drop by the site while the tests run
 CLAIRE_IP = "1.1.1.1"
@@ -43,10 +30,6 @@ def all_copy():
         yield study.challenge
         yield study.outcome
         yield from study.approach
-    for skill in skills_data:
-        yield skill.title
-        yield skill.description
-        yield skill.effect
 
 
 def skill_level_map():
@@ -73,10 +56,8 @@ class TheCopyReadsWell(unittest.TestCase):
 
     def test_the_prose_talks_about_how_and_leaves_the_tools_to_the_tags(self):
         # the stack already shows in the work tags and the skill bars, so the prose talks about how, not what
-        prose = [about_me_data.description, *(skill.description for skill in skills_data)]
         for tool in about_me_data.main_stack + ["Terraform", "Kubernetes", "Lambda", "DynamoDB"]:
-            for text in prose:
-                self.assertNotIn(tool, text)
+            self.assertNotIn(tool, about_me_data.description)
 
     def test_every_sentence_in_the_copy_is_said_just_once(self):
         sentences = [
@@ -93,16 +74,13 @@ class TheCopyReadsWell(unittest.TestCase):
     def test_the_about_leaves_the_greeting_to_the_hero(self):
         self.assertNotIn("I'm Cristopher", about_me_data.description)
 
-    def test_the_about_invites_visitors_to_touch_the_relics(self):
-        self.assertIn("relics", about_me_data.description)
+    def test_the_about_says_hi_to_the_characters_living_on_the_page(self):
+        self.assertIn("Link and Jill", about_me_data.description)
 
 
 class TheSkillsAddUp(unittest.TestCase):
     """Malenia tallies the skill bars and cards, and every number checks out."""
 
-    def test_every_skill_card_wears_an_icon_the_frontend_can_draw(self):
-        for skill in skills_data:
-            self.assertIn(skill.icon, KNOWN_SKILL_ICONS)
 
     def test_the_main_stack_shows_up_in_the_current_role(self):
         current_role_stack = projects_data[0].technologies
@@ -138,12 +116,7 @@ class TheSkillsAddUp(unittest.TestCase):
         self.assertEqual(skill_level_map()["C#"], 5)
         self.assertEqual(skill_level_map()["Node.js"], 5)
 
-    def test_the_skill_cards_include_one_for_ai(self):
-        titles = [skill.title for skill in skills_data]
-        self.assertIn("AI & LLMs", titles)
 
-    def test_the_skill_cards_fill_complete_rows_of_three(self):
-        self.assertEqual(len(skills_data) % 3, 0)
 
     def test_the_skill_levels_split_evenly_into_two_columns(self):
         self.assertEqual(len(about_me_data.skill_levels) % 2, 0)
@@ -155,12 +128,6 @@ class TheSkillsAddUp(unittest.TestCase):
 
     def test_the_skill_levels_stay_a_short_list(self):
         self.assertLessEqual(len(about_me_data.skill_levels), 30)
-
-    def test_every_skill_card_is_ready_for_a_friendly_duel(self):
-        for skill in skills_data:
-            self.assertGreater(skill.attack, 0)
-            self.assertGreater(skill.defense, 0)
-            self.assertTrue(skill.effect)
 
 
 class TheWorkHistoryHoldsTogether(unittest.TestCase):
@@ -314,45 +281,6 @@ class TheWorkEndpointsServeTheStory(unittest.TestCase):
         self.assertEqual(body[0]["highlights"], projects_data[0].highlights)
 
 
-class DateNightDiceRolls(unittest.TestCase):
-    """Claire, Malenia and Inde roll a d20 to pick the next date night spot."""
-
-    def setUp(self):
-        client.cookies.clear()
-
-    def test_claire_rolls_an_eighteen_and_passes_the_check(self):
-        with patch("main.randint", return_value=18):
-            body = client.get("/roll").json()
-        self.assertEqual(body, {"roll": 18, "dc": 8, "success": True, "message": "Check passed. Nice roll."})
-
-    def test_malenia_rolls_a_natural_twenty_for_a_critical_success(self):
-        with patch("main.randint", return_value=20):
-            body = client.get("/roll").json()
-        self.assertEqual(body["message"], "Natural 20! Critical success.")
-        self.assertTrue(body["success"])
-
-    def test_inde_rolls_a_natural_one_and_gets_the_critical_line(self):
-        with patch("main.randint", return_value=1):
-            body = client.get("/roll").json()
-        self.assertEqual(body["message"], "Natural 1. Critical failure.")
-        self.assertFalse(body["success"])
-
-    def test_a_low_first_roll_invites_claire_to_try_again(self):
-        with patch("main.randint", return_value=3):
-            body = client.get("/roll").json()
-        self.assertEqual(body["message"], "Check failed. Roll again?")
-
-    def test_a_second_low_roll_gets_a_fresh_line(self):
-        with patch("main.randint", return_value=3):
-            client.get("/roll")
-            body = client.get("/roll").json()
-        self.assertEqual(body["message"], "Failed again. The dice are not on your side.")
-
-    def test_the_roll_cookie_is_kept_safe(self):
-        with patch("main.randint", return_value=3):
-            cookie = client.get("/roll").headers["set-cookie"]
-        for flag in ["HttpOnly", "Secure", "SameSite=lax", "Max-Age=3600"]:
-            self.assertIn(flag, cookie)
 
 
 class MaleniaKeepsTheGates(unittest.TestCase):
