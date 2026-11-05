@@ -8,7 +8,6 @@ from models import (
     Metric,
     NavBarItem,
     Project,
-    Skill,
     SkillLevel,
     SocialLink,
 )
@@ -75,7 +74,7 @@ projects_data = [
             "Rebuilt the school insurance workflows from the ground up",
         ],
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript", "Azure"],
-        note="Gracias a Erika Soto por la confianza y por todo lo que me enseñó.",
+        note="Shoutout a Erika Soto, que le apostó a un junior y le enseñó el oficio. Gracias, jefa.",
         featured=False,
     ),
     Project(
@@ -194,76 +193,6 @@ case_studies_data = [
     ),
 ]
 
-# attack, defense and effect only show once Dark Magician Girl buffs the page and every card becomes a duel monster
-skills_data = [
-    Skill(
-        title="Leading Teams",
-        icon="TbUserCode",
-        description=(
-            "My calendar is mostly 1:1s, and I like it that way. I'd rather unblock five engineers before lunch "
-            "than write the clever thing myself."
-        ),
-        attack=2500,
-        defense=2100,
-        effect="Once per sprint: every engineer on your side of the field is unblocked.",
-    ),
-    Skill(
-        title="AI & LLMs",
-        icon="TbSparkles",
-        description=(
-            "Models get things wrong, so I treat them like any other dependency: guardrails, tests and a "
-            "fallback. A boring right answer beats a brilliant wrong one."
-        ),
-        attack=2800,
-        defense=1700,
-        effect="When a model hallucinates, negate it and return a grounded answer instead.",
-    ),
-    Skill(
-        title="Cloud & Infra",
-        icon="FaAws",
-        description=(
-            "Functions when traffic spikes, containers when it doesn't, and nothing clicked together by hand in a "
-            "console. If it isn't in code, it doesn't exist."
-        ),
-        attack=2300,
-        defense=2800,
-        effect="Cannot be destroyed by a Friday deploy.",
-    ),
-    Skill(
-        title="Frontend & UX",
-        icon="TbLayoutDashboard",
-        description=(
-            "Component libraries a whole product can share, and the small stuff people only notice when it's "
-            "missing: loading states, dark mode, copy that sounds like a person."
-        ),
-        attack=2400,
-        defense=2000,
-        effect="Flip every loading spinner on the field into a skeleton.",
-    ),
-    Skill(
-        title="Data & Search",
-        icon="TbDatabase",
-        description=(
-            "I start from how the data will be read and work backwards. Documents when the access patterns are "
-            "known, tables when the relationships matter, an index when people need answers fast."
-        ),
-        attack=2200,
-        defense=2500,
-        effect="Search your deck for any record and add it to your hand. Indexed, of course.",
-    ),
-    Skill(
-        title="Quality & Security",
-        icon="TbTestPipe",
-        description=(
-            "Unit tests for the logic, end to end tests for the paths people actually click, and a CI that's "
-            "allowed to say no. Secrets and alerts go in before launch, not after the first 3 a.m. page."
-        ),
-        attack=1900,
-        defense=3000,
-        effect="Negate any attack that skipped CI.",
-    ),
-]
-
 navbar_data = [
     NavBarItem(title="Home", url="/#home"),
     NavBarItem(title="About", url="/#about"),
@@ -368,7 +297,7 @@ about_me_data = AboutMe(
         "the roadmap, and I still open pull requests and leave long comments on other people's. When I push back "
         "on a design I bring another way to do it, because a no on its own doesn't teach anybody anything.\n\n"
         "Off the clock I'm working out, with my family, or every now and then a few volumes deep into a manga "
-        "or a video game. A few of those games left relics hidden around this page. Good luck."
+        "or a video game. A couple of those characters ended up living on this page, so say hi to Link and Jill."
     ),
 )
 

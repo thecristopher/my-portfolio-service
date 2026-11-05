@@ -1,6 +1,6 @@
 # my-portfolio-service
 
-The FastAPI backend that feeds [cristophercervantes.com](https://cristophercervantes.com). It serves the bio, work history, skills, navigation and contact info as JSON, my GitHub repos pitched by their READMEs, plus a d20 roll for a little game on the site.
+The FastAPI backend that feeds [cristophercervantes.com](https://cristophercervantes.com). It serves the bio, work history, skills, navigation and contact info as JSON, my GitHub repos pitched by their READMEs.
 
 The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfolio).
 
@@ -13,10 +13,8 @@ The frontend lives in [my-portfolio](https://github.com/thecristopher/my-portfol
 | `GET`  | `/about`        | Name, headline, recruiter summary, bio, location, languages, expertise and skill levels by category              |
 | `GET`  | `/projects`     | Every place I've worked: stack, pitch, the bullets no case study covers, the titles I held and the dates      |
 | `GET`  | `/case-studies` | The work I'd walk a hiring manager through: challenge, approach, outcome and stack                            |
-| `GET`  | `/skills`       | The skill cards                                                                                               |
 | `GET`  | `/contact`      | Email, mailto link and social profiles                                                                        |
 | `GET`  | `/github/repos` | My personal repos (no forks or archived), each pitched by its README's first paragraph and listing every language with at least a tenth of its code. Cached for 10 minutes |
-| `GET`  | `/roll`         | A d20 perception check against DC 8, with its own lines for a natural 20 and a natural 1. Fail once and it remembers with a cookie, so a second miss gets a different line |
 
 FastAPI also serves interactive docs at `/docs` and `/redoc` when it runs locally. They're switched off on Railway (detected through the `RAILWAY_ENVIRONMENT_ID` variable Railway sets), so production doesn't hand out a map of the API.
 
@@ -25,7 +23,6 @@ FastAPI also serves interactive docs at `/docs` and `/redoc` when it runs locall
 - CORS only lets the site's own origins read, and only with `GET`. No credentials cross origins.
 - Every response carries `nosniff`, `X-Frame-Options: DENY`, HSTS, `Referrer-Policy: no-referrer`, a locked-down `Content-Security-Policy` and a `Permissions-Policy`.
 - Each visitor gets 60 requests a minute, then a `429` with `Retry-After`. The visitor is the last address in `X-Forwarded-For`, the one Railway's proxy appends, so a forged header can't dodge the limit. The counter lives in memory, so it resets on deploy and is per instance.
-- The `/roll` cookie is `HttpOnly`, `Secure`, `SameSite=Lax` and expires after an hour.
 
 ## Running it locally
 

@@ -1,22 +1,20 @@
 import os
 import time
-from random import randint
 
-from fastapi import FastAPI, HTTPException, Response, Request, Cookie
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from data import (
     case_studies_data,
     projects_data,
-    skills_data,
     navbar_data,
     about_me_data,
     contact_info_data,
 )
 
 import github
-from models import Project, CaseStudy, Skill, NavBarItem, AboutMe, ContactInfo, RollResult, GitHubRepo
+from models import Project, CaseStudy, NavBarItem, AboutMe, ContactInfo, GitHubRepo
 
 
 # Railway sets these on every deploy, so the interactive docs only show up locally
@@ -142,13 +140,6 @@ def get_case_studies():
     return case_studies_data
 
 
-@app.get("/skills", response_model=list[Skill])
-def get_skills():
-    """
-    The skill cards, duel stats included.
-    """
-    return skills_data
-
 
 @app.get("/github/repos", response_model=list[GitHubRepo])
 def get_github_repos():
@@ -160,40 +151,3 @@ def get_github_repos():
     except OSError:
         raise HTTPException(status_code=502, detail="GitHub isn't answering right now.")
 
-
-PERCEPTION_DC = 8
-
-
-@app.get("/roll", response_model=RollResult)
-def perception_check(
-    response: Response,
-    request: Request,
-    failed_before: bool = Cookie(default=False, alias="failed_once")
-):
-    roll = randint(1, 20)
-    success = roll >= PERCEPTION_DC
-
-    if success:
-        message = "Check passed. Nice roll."
-        response.delete_cookie("failed_once", httponly=True, secure=True, samesite="lax")
-    elif failed_before:
-        message = "Failed again. The dice are not on your side."
-    else:
-        message = "Check failed. Roll again?"
-        # remember the miss so a second failure gets a different line
-        response.set_cookie(
-            key="failed_once",
-            value="true",
-            max_age=60 * 60,
-            httponly=True,
-            secure=True,
-            samesite="lax",
-        )
-
-    # the dice themselves get the last word on a natural 20 or a natural 1, the way Baldur's Gate calls them out
-    if roll == 20:
-        message = "Natural 20! Critical success."
-    elif roll == 1:
-        message = "Natural 1. Critical failure."
-
-    return RollResult(roll=roll, dc=PERCEPTION_DC, success=success, message=message)

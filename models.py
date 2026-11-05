@@ -57,16 +57,6 @@ class CaseStudy(BaseModel):
     metrics: list[Metric] = []
 
 
-class Skill(BaseModel):
-    title: str
-    icon: str
-    description: str
-    # the duel monster stats the skill card shows while the magician's buff is on
-    attack: int = 0
-    defense: int = 0
-    effect: str = ""
-
-
 class NavBarItem(BaseModel):
     title: str
     url: str
@@ -137,14 +127,6 @@ class ContactInfo(BaseModel):
     email: str
     mailto: str
     socials: list[SocialLink]
-
-
-class RollResult(BaseModel):
-    roll: int
-    # the difficulty class the roll had to meet
-    dc: int
-    success: bool
-    message: str
 
 
 class GitHubRepo(BaseModel):
