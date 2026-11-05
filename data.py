@@ -19,6 +19,8 @@ projects_data = [
         title="PSL Group",
         roles=["Senior Application Developer", "Tech Lead", "Engineering Manager"],
         url="https://www.pslgroup.com/",
+        location="Rosarito, Mexico",
+        work_mode="Remote",
         description="Medical and pharma news, read by professionals all over the world.",
         highlights=[
             "Joined to keep FirstWord, PSL's medical news platform, fast and current for readers worldwide",
@@ -48,6 +50,7 @@ projects_data = [
         title="Grupo Tress Internacional",
         roles=["Developer", "Senior Developer"],
         url="https://www.tress.com.mx/",
+        location="Tijuana, Mexico",
         description="Payroll and HR software that companies in Mexico, the U.S. and Canada run their people on.",
         highlights=[
             "Worked on the +orden console and Interis Works, the payroll products Tress customers use every pay period",
@@ -58,8 +61,11 @@ projects_data = [
     Project(
         title="Hisense",
         url="https://www.hisense.com.mx/",
+        location="Rosarito, Mexico",
         description="The TV and appliance maker. I worked where the software meets the factory floor.",
         highlights=[
+            "Led several C# and ASP.NET MVC projects for the corporate office and the plant floor",
+            "Connected the plant's internal systems so managers could follow manufacturing performance live",
             "Worked on the corporate website between plant projects",
         ],
         technologies=["C#", "MVC", "SQL"],
@@ -68,10 +74,13 @@ projects_data = [
     Project(
         title="Umbrella Seguros",
         url="https://www.umbrella-seguros.com/",
+        location="Tijuana, Mexico",
         description="An insurance company, and the one admin app both its staff and its policyholders log into.",
         highlights=[
             "One of the lead developers of Umbrella's admin app, an Azure client for the insurer and the insured alike",
             "Rebuilt the school insurance workflows from the ground up",
+            "Kept extending the core features as more customers came on, so the platform grew with them",
+            "Fixed UX problems and tightened the business rules along the way",
         ],
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript", "Azure"],
         note="Shoutout a Erika Soto, que le apostó a un junior y le enseñó el oficio. Gracias, jefa.",
@@ -81,6 +90,7 @@ projects_data = [
         title="Systems Communications",
         roles=["Intern"],
         url="https://www.systemscomm.net/es/inicio/",
+        location="Tijuana, Mexico",
         description="Where I wrote my first line of production code, for the people who run the border.",
         highlights=[
             "Maintained the app CBP used to control customs access and inspect trailers and commercial trucks",
@@ -185,7 +195,7 @@ case_studies_data = [
         approach=[
             "Designed automated processes that talk directly to the plant's robotics",
             "Added material access and personnel control to the same system",
-            "Built a Jira style ticketing app so the IT team could stop living in email",
+            "Built a Jira style ticketing app from scratch, and it became how the whole office asked IT for help",
         ],
         outcome="Plant productivity went up 100%.",
         technologies=["C#", "MVC", "SQL"],
