@@ -198,9 +198,9 @@ class TheWorkHistoryHoldsTogether(unittest.TestCase):
         remote = [project.title for project in projects_data if project.work_mode == "Remote"]
         self.assertEqual(remote, ["PSL Group"])
 
-    def test_umbrella_keeps_its_thank_you_to_erika_soto(self):
+    def test_umbrella_carries_no_note(self):
         umbrella = next(project for project in projects_data if project.title == "Umbrella Seguros")
-        self.assertIn("Erika Soto", umbrella.note)
+        self.assertIsNone(umbrella.note)
 
 
 class TheCaseStudiesTellTheWholeStory(unittest.TestCase):
