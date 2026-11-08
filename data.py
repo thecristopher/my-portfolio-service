@@ -74,7 +74,6 @@ projects_data = [
             "Rebuilt the school insurance workflows from the ground up",
         ],
         technologies=["C#", "MVC", "SQL", "Python", "JavaScript", "Azure"],
-        note="Shoutout a Erika Soto, que le apostó a un junior y le enseñó el oficio. Gracias, jefa.",
         featured=False,
     ),
     Project(
@@ -287,7 +286,7 @@ about_me_data = AboutMe(
         ),
     ],
     description=(
-        "I'm 32 and I'm from Rosarito, Baja California, a beach town just south of Tijuana. My first production "
+        "I'm 33 and I'm from Rosarito, Baja California, a beach town just south of Tijuana. My first production "
         "code ran at the border, and 9+ years later the things I build are used by people I'll never meet, in "
         "countries I've never been to.\n\n"
         "I didn't show up knowing much. I was an intern who could barely scratch out a few lines of code, and I "
